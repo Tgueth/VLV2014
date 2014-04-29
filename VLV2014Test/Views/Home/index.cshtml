@@ -1,0 +1,58 @@
+﻿<div id="TMGPrototype2">
+    <div class="ic"></div>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <ul class='sets'>
+        <li data-setname="Viva La Vino 2014">
+            <ul>
+                <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
+                    <div>
+                        <div class="content">
+                            <img src="../images/red_wine.jpg" alt="">
+                            <h3>Wine Tasting Fund Raiser</h3>
+                            <p></p>
+                            <p></p>
+                            <ul>
+                                <li><span>September 20, 2014</span></li>
+                                <li><span>6:30 PM - 10:30 PM</span></li>
+                                <li><span><a href="https://maps.google.com/maps?q=st+nicholas+greek+orthodox+church&ie=UTF-8&ei=FB5YU8zdIcfyyAGjh4D4Aw&sqi=2&ved=0CAYQ_AUoAQ">St. Nicholas Conference Center (Click here for map)</a></span></li>
+                                <li><span>An Evening of Fun, Great Wine and Good Food</span></li>
+                            </ul>
+                            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                        </div>
+                    </div>
+                </li>
+                <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
+                    <div>
+                        <div class="content">
+                            <img src="../images/red_wine.jpg" alt="">
+                            <h3>Food at VLV 2014</h3>
+                            <p></p>
+                            <p>To be announced at a future date</p>
+                            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li data-setname="Ticket(s)" >
+            <ul>
+                <li>
+                    <div class="content">
+                            <h3>
+                                @Html.ActionLink("Click Here to Purchase Ticket(s)", "PurchaseTicket", "Home")
+                            </h3>
+                    </div>
+                </li>
+            </ul>
+        </li>
+     </ul>
+</div>
+
+@section Scripts
+{
+<script>
+    $(window).load(function () {
+        $('#TMGPrototype2').TMGPrototype2({});
+    });
+</script>
+}

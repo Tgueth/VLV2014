@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "PurchaseTicket";
+}
+
+<div id="TMGPrototype2">
+    <div class="ic"></div>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <ul class='sets'>
+        <li data-setname="Ticket(s)">
+            <ul>
+                <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
+                    <div class="content">
+                        <h3>
+                            <a href="http://events.constantcontact.com/register/event?llr=8kyl96lab&oeidk=a07e925m32731522af0" target="_blank">Click here to purchase your tickets.</a>
+                        </h3>
+                        <p>
+                            Rotary Club of Troy is using ConstantContact to handle ticket purchases.
+                            This uses PayPal for credit card purchases, whether using a PayPal account or just using your credit card
+                            without a PayPal account.
+                        </p>
+                        <p>
+                            You may also pay by check by noting at time you purchase your tickets online that you wish to pay by check.
+                            Then send a check to Troy Rotary.  Your tickets will be noted as unpaid until the check clears.  You need
+                            to allow enough time, roughly 7 days, for processing if you mail the check.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(window).load(function () {
+            $('#TMGPrototype2').TMGPrototype2({});
+        });
+    </script>
+}

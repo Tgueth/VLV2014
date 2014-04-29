@@ -1,0 +1,67 @@
+﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.AuctionGroup
+@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@using VLV2014Test.Models
+
+@{
+    ViewBag.Title = "AuctionItems";
+}
+
+<div id="TMGPrototype2">
+    <div class="ic"></div>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <ul class='sets'>
+        <li data-setname="Live Aucton">
+            <ul>
+                @{AuctionItems la = Model["Live Auction"];}
+                @foreach (AuctionItem item in la)
+                {
+                    <li data-srcpreview="../images/red1.jpg">
+                        <div>
+                            <div class="content">
+                                <img src="@item.PictureLink" alt="">
+                                <h3>@item.ItemName</h3>
+                                <p>@item.Description</p>
+                                <p>Valued at: @item.ItemValue.ToString("C")</p>
+                                <ul>
+                                    <li><span>Variety:</span> Mivamus magna</li>
+                                </ul>
+                                <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li data-setname="Silent Auction">
+            <ul>
+                @{AuctionItems items = Model["Silent Auction"];}
+                @foreach (AuctionItem item in items)
+                {
+                    <li data-srcpreview="../images/red1.jpg">
+                        <div>
+                            <div class="content">
+                                <img src="@item.PictureLink" alt="">
+                                <h3>@item.ItemName</h3>
+                                <p>@item.Description</p>
+                                <p>Valued at: @item.ItemValue.ToString("C")</p>
+                                <ul>
+                                    <li><span>Variety:</span> Mivamus magna</li>
+                                </ul>
+                                <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(window).load(function () {
+            $('#TMGPrototype2').TMGPrototype2({});
+        });
+    </script>
+}

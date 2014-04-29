@@ -1,0 +1,50 @@
+﻿<div id="TMGPrototype2">
+    <div class="ic"></div>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <ul class='sets'>
+        <li data-setname="Viva La Vino 2014">
+            <ul>
+                <li data-srcpreview="../images/red1.jpg">
+                    <div>
+                        <div class="content">
+                            <img src="../images/red_wine.jpg" alt="">
+                            <h3>Wine Tasting Fund Raiser</h3>
+                            <p></p>
+                            <p></p>
+                            <ul>
+                                <li><span>6:30 PM Doors Open</span></li>
+                                <li><span>6:30 PM Wine Tasting Starts</span></li>
+                                <li><span>6:30 PM Silent Auction Starts</span></li>
+                                <li><span>7:00 PM Food</span></li>
+                                <li><span>8:45 - 9:00 PM Silent Auctions End</span></li>
+                                <li><span>9:15 PM Live Auction</span></li>
+                                <li><span>10:30 PM VLV 2014 Closes</span></li>
+                            </ul>
+                            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li data-setname="Ticket(s)">
+            <ul>
+                <li>
+                    <div class="content">
+                        <h3>
+                            @Html.ActionLink("Click Here to Purchase Ticket(s)", "PurchaseTicket", "Home")
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(window).load(function () {
+            $('#TMGPrototype2').TMGPrototype2({});
+        });
+    </script>
+}
