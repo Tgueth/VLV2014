@@ -174,13 +174,73 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\justified-nav.css" />
+    <Content Include="css\form.css" />
+    <Content Include="css\grid.css" />
+    <Content Include="css\ie.css" />
+    <Content Include="css\jquery-ui-1.10.3.custom.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\superfish.css" />
+    <Content Include="css\TMGPrototype2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\arrow.png" />
+    <Content Include="images\bg_body.jpg" />
+    <Content Include="images\cont_bg.png" />
+    <Content Include="images\dreamstime_s_1890011.jpg" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\header_bg.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\marker.png" />
+    <Content Include="images\menu_hover.png" />
+    <Content Include="images\menu_sep.png" />
+    <Content Include="images\page2_img1.jpg" />
+    <Content Include="images\page3_img1.jpg" />
+    <Content Include="images\page3_img2.jpg" />
+    <Content Include="images\page3_img3.jpg" />
+    <Content Include="images\page4_img1.jpg" />
+    <Content Include="images\page5_img1.jpg" />
+    <Content Include="images\page5_img2.jpg" />
+    <Content Include="images\prevnext.png" />
+    <Content Include="images\red1.jpg" />
+    <Content Include="images\red2.jpg" />
+    <Content Include="images\red3.jpg" />
+    <Content Include="images\red_wine.jpg" />
+    <Content Include="images\rotary emblem.GIF" />
+    <Content Include="images\search_icon.png" />
+    <Content Include="images\socials.png" />
+    <Content Include="images\spark1.jpg" />
+    <Content Include="images\spark2.jpg" />
+    <Content Include="images\sparkl_wine.jpg" />
+    <Content Include="images\VivaLaVino.jpg" />
+    <Content Include="images\VivaLaVinoSmaller.jpg" />
+    <Content Include="images\white1.jpg" />
+    <Content Include="images\white2.jpg" />
+    <Content Include="images\white3.jpg" />
+    <Content Include="images\white_wine.jpg" />
+    <Content Include="js\bgStretch.js" />
+    <Content Include="js\forms.js" />
+    <Content Include="js\html5shiv.js" />
+    <Content Include="js\jquery-migrate-1.1.1.js" />
+    <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.equalheights.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.ui.touch-punch.js" />
+    <Content Include="js\PIE.htc" />
+    <Content Include="js\PIE.php" />
+    <Content Include="js\script.js" />
+    <Content Include="js\superfish.js" />
+    <Content Include="js\TMGPrototype2.js" />
     <Content Include="Views\Home\AuctionItems.cshtml" />
     <Content Include="Views\Home\EventSchedule.cshtml" />
-    <None Include="Views\Home\index.cshtml" />
-    <Content Include="Web.config" />
+    <None Include="Properties\PublishProfiles\DiscountASP.Net.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalLaptop.pubxml" />
+    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

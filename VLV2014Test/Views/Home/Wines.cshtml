@@ -8,33 +8,61 @@
 				<li data-setName="Red Wine">
 					<ul>
                         @{WineList reds = Model["Red Wine"];}
-                        @foreach(Wine wine in reds)
+                        @if(reds == null || reds.Count <= 0)
                         {
-                        <li data-srcPreview="../images/red1.jpg">
-                            <div>
-                                <div class="content">
-                                    <img src="../images/red_wine.jpg" alt="">
-                                    <h3>@wine.ItemName</h3>
-                                    <p>@wine.Description</p>
-                                    <ul>
-                                        <li><span>Variety:</span> Mivamus magna</li>
-                                        <li><span>Alcohol:</span> Quisque viverra</li>
-                                        <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                        <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                        <li><span>Bottling Date: </span> Cras facilisis</li>
-                                        <li><span>Number of Cases:</span> Aliquam nibh</li>
-                                    </ul>
-                                    <div class="alright"><a href="#" class="btn">Read More</a></div>
+                             <li data-srcPreview="../images/red1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of red wines is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                             </li>
+                        }
+                        else
+                        { 
+                            foreach(Wine wine in reds)
+                            {
+                            <li data-srcPreview="../images/red1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>@wine.ItemName</h3>
+                                        <p>@wine.Description</p>
+                                        <ul>
+                                            <li><span>Variety:</span> Mivamus magna</li>
+                                            <li><span>Alcohol:</span> Quisque viverra</li>
+                                            <li><span>Length/Type of Aging: </span> Etiam dui</li>
+                                            <li><span>Oak Types: </span> Phasellus accumsan</li>
+                                            <li><span>Bottling Date: </span> Cras facilisis</li>
+                                        </ul>
+                                        <div class="alright"><a href="#" class="btn">Read More</a></div>
+                                    </div>
+                                </div>
+                            </li>
+                            }
                         }
 					</ul>
 				</li>
 				<li data-setName="White Wine">
 					<ul>
                         @{WineList whites = Model["White Wine"];}
-                        @foreach (Wine wine in whites)
+                        @if(whites == null || whites.Count <= 0)
+                        {
+                             <li data-srcPreview="../images/white1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/white_wine.jpg" alt="">
+                                        <h3>List of white wines is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                             </li>
+                        }
+                        else
+                        { 
+                        foreach (Wine wine in whites)
                         {
 						<li data-srcPreview="../images/white1.jpg">
 							<div>
@@ -48,19 +76,33 @@
 										<li><span>Length/Type of Aging: </span> Etiam dui</li>
 										<li><span>Oak Types: </span> Phasellus accumsan</li>
 										<li><span>Bottling Date: </span> Cras facilisis</li>
-										<li><span>Number of Cases:</span> Aliquam nibh</li>
 									</ul>
 									<div class="alright"><a href="#" class="btn">Read More</a></div>
 								</div>
 							</div>
 						</li>
                         }
+                        }
 					</ul>
 				</li>
 				<li data-setName="Dessert Wine">
 					<ul>
-                        @{WineList dessert = Model["White Wine"];}
-                        @foreach (Wine wine in dessert)
+                        @{WineList dessert = Model["Dessert Wine"];}
+                        @if(dessert == null || dessert.Count <= 0)
+                        { 
+                             <li data-srcPreview="../images/spark1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/spark1_wine.jpg" alt="">
+                                        <h3>List of dessert wines is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                             </li>
+                        }
+                        else
+                        { 
+                        foreach (Wine wine in dessert)
                         {
 						<li data-srcPreview="../images/spark1.jpg">
 							<div>
@@ -74,12 +116,12 @@
 										<li><span>Length/Type of Aging: </span> Etiam dui</li>
 										<li><span>Oak Types: </span> Phasellus accumsan</li>
 										<li><span>Bottling Date: </span> Cras facilisis</li>
-										<li><span>Number of Cases:</span> Aliquam nibh</li>
 									</ul>
 									<div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
 								</div>
 							</div>
 						</li>
+                        }
                         }
 					</ul>
 				</li>

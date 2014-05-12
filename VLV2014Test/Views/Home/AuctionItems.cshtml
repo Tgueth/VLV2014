@@ -13,7 +13,21 @@
         <li data-setname="Live Aucton">
             <ul>
                 @{AuctionItems la = Model["Live Auction"];}
-                @foreach (AuctionItem item in la)
+                @if(la == null || la.Count <= 0)
+                {
+                             <li data-srcPreview="../images/red1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of Live Auction items is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                             </li>
+                }
+                else
+                { 
+                foreach (AuctionItem item in la)
                 {
                     <li data-srcpreview="../images/red1.jpg">
                         <div>
@@ -30,12 +44,27 @@
                         </div>
                     </li>
                 }
+                }
             </ul>
         </li>
         <li data-setname="Silent Auction">
             <ul>
                 @{AuctionItems items = Model["Silent Auction"];}
-                @foreach (AuctionItem item in items)
+                @if(items == null || items.Count <=0)
+                {
+                             <li data-srcPreview="../images/red1.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of Silent Auction items is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                             </li>
+                }
+                else
+                { 
+                foreach (AuctionItem item in items)
                 {
                     <li data-srcpreview="../images/red1.jpg">
                         <div>
@@ -51,6 +80,7 @@
                             </div>
                         </div>
                     </li>
+                }
                 }
             </ul>
         </li>

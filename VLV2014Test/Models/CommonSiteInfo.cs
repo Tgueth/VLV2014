@@ -43,12 +43,6 @@ namespace VLV2014Test
 
         public AuctionGroup Auctions = new AuctionGroup();
 
-        public WineList Reds = new WineList();
-        public WineList Whites = new WineList();
-        public WineList DessertWines = new WineList();
-
-        public WineGroups WineTypes = new WineGroups();
-
         public CommonSiteInfo()
         {
         }
@@ -75,12 +69,6 @@ namespace VLV2014Test
                 siteInfo.SilentAuction = MvcApplication.SiteDataMgr.GetAuctionItemsByType(EventIdent, "Silent Auction");
                 siteInfo.Auctions.Add(siteInfo.SilentAuction);
                 
-                siteInfo.Reds = MvcApplication.SiteDataMgr.GetWinesByClass(EventIdent, "Red Wine");
-                siteInfo.WineTypes.Add(siteInfo.Reds);
-                siteInfo.Whites = MvcApplication.SiteDataMgr.GetWinesByClass(EventIdent, "White Wine");
-                siteInfo.WineTypes.Add(siteInfo.Whites);
-                siteInfo.DessertWines = MvcApplication.SiteDataMgr.GetWinesByClass(EventIdent, "Dessert Wine");
-                siteInfo.WineTypes.Add(siteInfo.DessertWines);
 
                 Sponsors pres = MvcApplication.SiteDataMgr.GetSponsorsByLevel(EventIdent, "Title");
                 if (pres.Count > 0)
@@ -114,9 +102,6 @@ namespace VLV2014Test
             CommonSiteInfo.EventIdent = EventIdent;
             SilentAuction = dataMgr.GetAuctionItemsByType(EventIdent, "Silent Auction");
             LiveAuction = dataMgr.GetAuctionItemsByType(EventIdent, "Live Auction");
-            Reds = dataMgr.GetWinesByClass(EventIdent, "Red Wine");
-            Whites = dataMgr.GetWinesByClass(EventIdent, "White Wine");
-            DessertWines = dataMgr.GetWinesByClass(EventIdent, "Dessert Wine");
 
             Sponsors pres = dataMgr.GetSponsorsByLevel(EventIdent, "Presenting");
             if (pres != null && pres.Count > 0)
