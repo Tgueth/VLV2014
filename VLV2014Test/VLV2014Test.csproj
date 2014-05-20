@@ -235,6 +235,8 @@
     <Content Include="js\TMGPrototype2.js" />
     <Content Include="Views\Home\AuctionItems.cshtml" />
     <Content Include="Views\Home\EventSchedule.cshtml" />
+    <Content Include="Downloads\Viva La Vino 2014 Sponsorship and Donation form.pdf" />
+    <None Include="Properties\PublishProfiles\AzureVLV.pubxml" />
     <None Include="Properties\PublishProfiles\DiscountASP.Net.pubxml" />
     <None Include="Properties\PublishProfiles\LocalLaptop.pubxml" />
     <Content Include="Views\Home\index.cshtml" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Home\Wines.cshtml" />
     <Content Include="Views\Home\PurchaseTicket.cshtml" />
     <Content Include="Views\Home\Sponsors.cshtml" />
+    <None Include="Properties\PublishProfiles\vivalavinotroy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,14 @@
+~*.*
+*.suo
+*.*.suo
+*.docx
+*.obj
+VLV2014Test/bin/
+VLV2014Test/App_Data/
+VLV2014Test/BinBackup/
+VLV2014Test/CompareFolder/
+VLV2014Test/Filters/
+VLV2014Test/obj/
+VLV2014Test/Deployments/
+VLV2014Test/packages
+packages/
