@@ -16,16 +16,16 @@ namespace VLV2014Test
 
         public MenuItems Menu = new MenuItems()
         {
-            { new MenuItem("Home Page", "Index", "Home", null, null, true, false,false) },
-            { new MenuItem("Event Schedule", "EventSchedule", "Home", null, null, true, false,false) },
-            { new MenuItem("Auction Items", "AuctionItems", "Home", null, null, true, false,false) },
-            { new MenuItem("Wine List", "WineList", "Home", null, null, true, false,false) },
-            { new MenuItem("Purchase Ticket", "PurchaseTicket", "Home", null, null, true, false,false) },
-            { new MenuItem("Event Photos 2012", "EventPhotos", "Home", null, null, true, false,false) },
-            { new MenuItem("Sponsors List", "SponsorsList", "Home", null, null, true, false,false) },
-            { new MenuItem("Donations","Donations","Home",null,null, true, false,false) },
-            { new MenuItem("Music", "Music", "Home", null, null, true, false,false) },
-            { new MenuItem("Charitable Work", "ShowCharity", "Home", null, null, true, false,false) }
+            { new MenuItem("Home Page", "Index", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Event Schedule", "EventSchedule", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Auction Items", "AuctionItems", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Wine List", "WineList", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Purchase Ticket", "PurchaseTicket", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Event Photos 2012", "EventPhotos", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Sponsors List", "SponsorsList", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Donations","Donations","Home",null,null, true, false,false,false) },
+            { new MenuItem("Music", "Music", "Home", null, null, true, false,false,false) },
+            { new MenuItem("Charitable Work", "ShowCharity", "Home", null, null, true, false,false,false) }
         };
 
         public Sponsor PresentingSponsor = new Sponsor();
