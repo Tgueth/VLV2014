@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using VLV2014Test.Models;
+
 using BinaryStarTechnology.CharityEventRevenueMgmtClasses;
 
 namespace VLV2014Test.Controllers
@@ -50,7 +52,8 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Sponsors()
         {
-            return View();
+            Sponsors AllSponsors = MvcApplication.SiteDataMgr.GetSponsors(CommonSiteInfo.EventIdent);
+            return View(AllSponsors);
         }
 
         public ActionResult AuctionItems()

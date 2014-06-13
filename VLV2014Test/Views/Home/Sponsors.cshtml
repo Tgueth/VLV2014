@@ -1,6 +1,9 @@
-﻿
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@using VLV2014Test.Models
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.Sponsors
 @{
     ViewBag.Title = "Sponsors";
+    string link=null;
 }
 
 <div id="TMGPrototype2">
@@ -9,19 +12,52 @@
     <ul class='sets'>
         <li data-setname="Sponsors">
             <ul>
-                <li data-srcpreview="../images/red1.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="../images/red_wine.jpg" alt="">
-                            <h3>Sponsors</h3>
-                            <p></p>
-                            <p>To be updated</p>
-                            <ul>
-                            </ul>
-                            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                @if (Model == null || Model.Count <= 0)
+                {
+                    <li data-srcpreview="../images/red1.jpg">
+                        <div>
+                            <div class="content">
+                                <img src="../images/red_wine.jpg" alt="">
+                                <h3>Sponsors</h3>
+                                <p></p>
+                                <p>To be updated</p>
+                                <ul></ul>
+                                <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                }
+                else
+                {
+                    foreach (Sponsor sponsor in Model)
+                    {
+                        <li data-srcpreview="../images/red1.jpg">
+                            <div>
+                                <div class="content">
+                                    @if(sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
+                                    {
+                                        link = sponsor.SponsorImage.Link;
+                                        
+                                        <img src="@sponsor.SponsorImage.Image" alt="">
+                                    }
+                                    else
+                                    {
+                                        link = "";
+                                        
+                                        <img src="../images/Image_Not_Available.jpg" alt="">
+                                    }
+                                    <p>&nbsp;</p>
+                                    <h3>@sponsor.SponsorLevel Level Sponsor</h3>
+                                    <p style="font-weight:bold;font-size:16pt">@sponsor.SponsorName</p>
+                                    <p>@sponsor.SponsorSecondLine</p>
+                                    <p><a href="@link"  >Website</a></p>
+                                    <ul></ul>
+                                    <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
             </ul>
         </li>
         <li data-setname="Forms">
