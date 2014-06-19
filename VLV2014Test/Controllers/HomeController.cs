@@ -65,7 +65,9 @@ namespace VLV2014Test.Controllers
 
         public ActionResult EventSchedule()
         {
-            return View();
+            EventActivities acts = MvcApplication.SiteDataMgr.GetEventActivities(CommonSiteInfo.EventIdent);
+
+            return View(acts);
         }
 
         public ActionResult SponsorForm()
