@@ -58,9 +58,15 @@ namespace VLV2014Test.Controllers
 
         public ActionResult AuctionItems()
         {
-            CommonSiteInfo siteInfo = CommonSiteInfo.GetSiteData(this);
+            AuctionGroup auctions = new AuctionGroup();
 
-            return View(siteInfo.Auctions);
+            AuctionItems liveAuction = MvcApplication.SiteDataMgr.GetAuctionItemsByType(CommonSiteInfo.EventIdent, "Live Auction");
+            auctions.Add(liveAuction);
+
+            AuctionItems silentAuction = MvcApplication.SiteDataMgr.GetAuctionItemsByType(CommonSiteInfo.EventIdent, "Silent Auction");
+            auctions.Add(silentAuction);
+
+            return View(auctions);
         }
 
         public ActionResult EventSchedule()
