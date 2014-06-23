@@ -4,7 +4,7 @@
 <li data-srcpreview="../images/red1.jpg">
     <div>
         <div class="content">
-            <img src="@Model.PictureLink" alt="">
+            <img src="@Model.PictureLink.Image" alt="">
             <h3>@Model.Item</h3>
             <p style="font-weight:bold;font-size:12pt">@Model.Name</p>
             @if(Model.Name != Model.Description)
@@ -12,6 +12,7 @@
                 <p>@Model.Description</p>
             }
             <p>Valued at: @Model.ItemValue.ToString("C")</p>
+            <p> @(Model.DonatedBy != null ? "Donated by:" + Model.DonatedBy.Company : "")</p>
             <ul>
                 <li></li>
             </ul>
