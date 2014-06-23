@@ -1,0 +1,21 @@
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.AuctionItem
+
+<li data-srcpreview="../images/red1.jpg">
+    <div>
+        <div class="content">
+            <img src="@Model.PictureLink" alt="">
+            <h3>@Model.Item</h3>
+            <p style="font-weight:bold;font-size:12pt">@Model.Name</p>
+            @if(Model.Name != Model.Description)
+            {
+                <p>@Model.Description</p>
+            }
+            <p>Valued at: @Model.ItemValue.ToString("C")</p>
+            <ul>
+                <li></li>
+            </ul>
+            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+        </div>
+    </div>
+</li>

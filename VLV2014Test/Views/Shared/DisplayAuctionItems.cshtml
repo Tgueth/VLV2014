@@ -1,0 +1,26 @@
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.AuctionItems
+
+<ul>
+    @if (Model == null || Model.Count <= 0)
+    {
+        <li data-srcpreview="../images/red1.jpg">
+            <div>
+                <div class="content">
+                    <img src="../images/red_wine.jpg" alt="">
+                    <h3>List of Live Auction items is not yet avaiModelble</h3>
+                    <p>Please check back Modelter.</p>
+                </div>
+            </div>
+        </li>
+    }
+    else
+    {
+        foreach (AuctionItem item in Model)
+        {
+            @Html.Partial("DisplayAuctionItemInfo", item)
+        }
+    }
+</ul>
+
+

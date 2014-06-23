@@ -272,6 +272,8 @@
     <Content Include="Views\Home\PurchaseTicket.cshtml" />
     <Content Include="Views\Home\Sponsors.cshtml" />
     <None Include="Properties\PublishProfiles\vivalavinotroy.pubxml" />
+    <Content Include="Views\Shared\DisplayAuctionItemInfo.cshtml" />
+    <Content Include="Views\Shared\DisplayAuctionItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
