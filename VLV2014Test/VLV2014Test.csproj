@@ -186,6 +186,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\4C_Bank.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\bg_body.jpg" />
     <Content Include="images\BJ logo Hz copy-lightbrown2.jpg" />
@@ -196,6 +197,7 @@
     <Content Include="images\header_bg.png" />
     <Content Include="images\Image_Not_Available.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\Mark Mullin Logo.png" />
     <Content Include="images\marker.png" />
     <Content Include="images\menu_hover.png" />
     <Content Include="images\menu_sep.png" />

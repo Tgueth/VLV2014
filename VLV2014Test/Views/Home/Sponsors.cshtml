@@ -34,23 +34,24 @@
                         <li data-srcpreview="../images/red1.jpg">
                             <div>
                                 <div class="content">
-                                    @if(sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
+                                    @if (sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
                                     {
                                         link = sponsor.SponsorImage.Link;
-                                        
-                                        <img src="@sponsor.SponsorImage.Image" alt="">
+                                        <a href="@link" target="_blank">
+                                            <img src="@sponsor.SponsorImage.Image" alt="">
+                                        </a>
                                     }
                                     else
                                     {
                                         link = "";
-                                        
+
                                         <img src="../images/Image_Not_Available.jpg" alt="">
                                     }
                                     <p>&nbsp;</p>
                                     <h3>@sponsor.SponsorLevel Level Sponsor</h3>
                                     <p style="font-weight:bold;font-size:16pt">@sponsor.SponsorName</p>
                                     <p>@sponsor.SponsorSecondLine</p>
-                                    <p style="font-size:12pt"><a href="@link"  >Website</a></p>
+                                    <p style="font-size:12pt"><a href="@link" target="_blank" >Website</a></p>
                                     <ul></ul>
                                     <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
                                 </div>
