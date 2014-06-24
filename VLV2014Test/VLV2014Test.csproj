@@ -191,6 +191,7 @@
     <Content Include="images\BJ logo Hz copy-lightbrown2.jpg" />
     <Content Include="images\cont_bg.png" />
     <Content Include="images\dreamstime_s_1890011.jpg" />
+    <Content Include="images\EnglishAuctioneer.jpg" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\header_bg.png" />
     <Content Include="images\Image_Not_Available.jpg" />
@@ -218,6 +219,7 @@
     <Content Include="images\spark1.jpg" />
     <Content Include="images\spark2.jpg" />
     <Content Include="images\sparkl_wine.jpg" />
+    <Content Include="images\the-capital-grille.png" />
     <Content Include="images\VivaLaVino.jpg" />
     <Content Include="images\VivaLaVinoSmaller.jpg" />
     <Content Include="images\white1.jpg" />
