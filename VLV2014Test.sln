@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLV2014Test", "VLV2014Test\VLV2014Test.csproj", "{9D0F790C-80E6-4394-85D4-D02659798AF1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E0E7BB1B-3C7B-4479-8421-FD972814536C} = {E0E7BB1B-3C7B-4479-8421-FD972814536C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityEventRevenueMgmtClasses", "..\CharityEventRevenueMgmtClasses\CharityEventRevenueMgmtClasses\CharityEventRevenueMgmtClasses.csproj", "{E0E7BB1B-3C7B-4479-8421-FD972814536C}"
 EndProject

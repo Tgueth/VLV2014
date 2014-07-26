@@ -282,6 +282,7 @@
     <None Include="Properties\PublishProfiles\vivalavinotroy.pubxml" />
     <Content Include="Views\Shared\DisplayAuctionItemInfo.cshtml" />
     <Content Include="Views\Shared\DisplayAuctionItems.cshtml" />
+    <Content Include="Views\Home\Foods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

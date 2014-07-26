@@ -80,5 +80,13 @@ namespace VLV2014Test.Controllers
         {
             return File("../Downloads/Viva La Vino 2014 Sponsorship and Donation form.pdf", "application/pdf","VLV2014SponsorForm.pdf");
         }
+
+        public ActionResult Foods()
+        {
+            RevenueItems foods = MvcApplication.SiteDataMgr.GetFoods(CommonSiteInfo.EventIdent);
+            Tables foodTables = MvcApplication.SiteDataMgr.GetTablesForAuctionSaleType(CommonSiteInfo.EventIdent, "Foods");
+
+            return View(foods);
+        }
     }
 }
