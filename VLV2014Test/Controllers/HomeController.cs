@@ -83,10 +83,15 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Foods()
         {
-            RevenueItems foods = MvcApplication.SiteDataMgr.GetFoods(CommonSiteInfo.EventIdent);
+            RevenueItems foods = MvcApplication.SiteDataMgr.GetRevenueItemsByType(CommonSiteInfo.EventIdent,"Foods");
             Tables foodTables = MvcApplication.SiteDataMgr.GetTablesForAuctionSaleType(CommonSiteInfo.EventIdent, "Foods");
 
-            return View(foods);
+            return View(foodTables);
+        }
+
+        public ActionResult BidderSignup()
+        {
+            return View();
         }
     }
 }

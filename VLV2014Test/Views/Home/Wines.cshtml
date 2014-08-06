@@ -1,6 +1,11 @@
 ﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.WineGroups
 @using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
+@{
+    <!--ViewBag.Title = "Sponsors";-->
+    string link = null;
+}
+
 
 		<div id="TMGPrototype2"><div class="ic"></div>
 			<h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
@@ -27,17 +32,26 @@
                             <li data-srcPreview="../images/red1.jpg">
                                 <div>
                                     <div class="content">
-                                        <img src="../images/red_wine.jpg" alt="">
+                                        @if (wine.PictureLink != null)
+                                        {
+                                            link = wine.PictureLink.Link;
+                                            <img src="@wine.PictureLink.Image" alt="">
+                                        }
+                                        else
+                                        {
+                                            link = "";
+                                            <img src="../images/Image_Not_Available.jpg" alt="">
+                                        }
                                         <h3>@wine.ItemName</h3>
                                         <p>@wine.Description</p>
-                                        <ul>
+                                        <!--<ul>
                                             <li><span>Variety:</span> Mivamus magna</li>
                                             <li><span>Alcohol:</span> Quisque viverra</li>
                                             <li><span>Length/Type of Aging: </span> Etiam dui</li>
                                             <li><span>Oak Types: </span> Phasellus accumsan</li>
                                             <li><span>Bottling Date: </span> Cras facilisis</li>
                                         </ul>
-                                        <div class="alright"><a href="#" class="btn">Read More</a></div>
+                                        <div class="alright"><a href="#" class="btn">Read More</a></div>-->
                                     </div>
                                 </div>
                             </li>
@@ -67,17 +81,26 @@
 						<li data-srcPreview="../images/white1.jpg">
 							<div>
 								<div class="content">
-									<img src="../images/white_wine.jpg" alt="">
+                                    @if (wine.PictureLink != null)
+                                    {
+                                        link = wine.PictureLink.Link;
+                                        <img src="@wine.PictureLink.Image" alt="">
+                                    }
+                                    else
+                                    {
+                                        link = "";
+                                        <img src="../images/Image_Not_Available.jpg" alt="">
+                                    }
                                     <h3>@wine.ItemName</h3>
                                     <p>@wine.Description</p>
-									<ul>
+									<!--<ul>
 										<li><span>Variety:</span> Mivamus magna</li>
 										<li><span>Alcohol:</span> Quisque viverra</li>
 										<li><span>Length/Type of Aging: </span> Etiam dui</li>
 										<li><span>Oak Types: </span> Phasellus accumsan</li>
 										<li><span>Bottling Date: </span> Cras facilisis</li>
 									</ul>
-									<div class="alright"><a href="#" class="btn">Read More</a></div>
+									<div class="alright"><a href="#" class="btn">Read More</a></div>-->
 								</div>
 							</div>
 						</li>
@@ -107,17 +130,26 @@
 						<li data-srcPreview="../images/spark1.jpg">
 							<div>
 								<div class="content">
-									<img src="../images/sparkl_wine.jpg" alt="">
+                                    @if (wine.PictureLink != null && wine.PictureLink.Image != null)
+                                    {
+                                        link = wine.PictureLink.Link;
+                                        <img src="@wine.PictureLink.Image" alt="">
+                                    }
+                                    else
+                                    {
+                                        link = "";
+                                        <img src="../images/Image_Not_Available.jpg" alt="">
+                                    }
                                     <h3>@wine.ItemName</h3>
                                     <p>@wine.Description</p>
-									<ul>
+									<!--<ul>
 										<li><span>Variety:</span> Mivamus magna</li>
 										<li><span>Alcohol:</span> Quisque viverra</li>
 										<li><span>Length/Type of Aging: </span> Etiam dui</li>
 										<li><span>Oak Types: </span> Phasellus accumsan</li>
 										<li><span>Bottling Date: </span> Cras facilisis</li>
 									</ul>
-									<div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+									<div class="alright"><a href="#" class="btn">Read More</a></div>-->
 								</div>
 							</div>
 						</li>

@@ -1,0 +1,56 @@
+﻿@using VLV2014Test.Models
+<div id="TMGPrototype2">
+    <div class="ic">
+        <h1>
+            <p><a href="http://www.troyrotary.net" target="_blank"><img src="../images/rotary emblem.GIF" alt="Rotary Club of Troy" height="150" width="150" /></a></p>
+            <p><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014" /></a></p>
+        </h1>
+    </div>
+    <ul class='sets'>
+        <li data-setname="Register For Bidding">
+            <ul>
+                <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
+                    <div>
+                        <div class="content">
+                            <img src="../images/red_wine.jpg" alt="">
+                            <h3>Create logon</h3>
+                            <p></p>
+                            <p>Bidding for silent auction will be done electronically this year.  When you check-in on the night of VLV 2014, you 
+                            will be given your bid number and instruction on how to access the bidding system either with a smartphone (IPhone, Android, Windows Phone),
+                            a tablet or via touchscreen computers at VLV.
+                            </p>
+                            <p>To speed up the check-in process for VLV 2014, you may create your personal logon by clicking the link below to register an unique id
+                            and password.  We recommend using your email address for your id.  The password you create may be any combination of letters, numbers or punctuation
+                            marks and must be at least six letters long. Please remember your password.</p>
+                            <ul>
+                                <li><span style="text-decoration:underline">@Html.ActionLink("Click here to register", "Register", "Account")</span></li>
+                            </ul>
+                            <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li data-setname="Test Logon">
+            <ul>
+                <li>
+                    <div class="content">
+                        <img src="../images/red_wine.jpg" alt="">
+                        <h3>
+                            @Html.ActionLink("Test Logon", "Logon", "Account")
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+@section Scripts
+{
+    <script>
+    $(window).load(function () {
+        $('#TMGPrototype2').TMGPrototype2({});
+    });
+    </script>
+}

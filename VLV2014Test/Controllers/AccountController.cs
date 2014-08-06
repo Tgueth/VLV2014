@@ -8,7 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+
 using VLV2014Test.Models;
+
+using BinaryStarTechnology.CharityEventRevenueMgmtClasses;
 
 namespace VLV2014Test.Controllers
 {
@@ -76,14 +79,33 @@ namespace VLV2014Test.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            Bidder bidder = (Bidder)Session["Bidder"];
+            string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    result = UserManager.AddToRole(user.Id, "Bidder");
+                    if (result.Succeeded == true)
+                    {
+                        await SignInAsync(user, isPersistent: false);
+                        if (bidder == null)
+                        {
+                            MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, user.Id, "Registration occurred for " + model.UserName, ipAddress);
+                            return RedirectToAction("GetBidNbr");
+                        }
+                        // now add the ASP.NET identity to the Bidder record for next logon
+                        MvcApplication.SiteDataMgr.UpdateBidderWithLogonID(CommonSiteInfo.EventIdent, bidder, new Guid(user.Id));
+                        MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, user.Id, "Registration took place for " + model.UserName + " with existing Bidder.", ipAddress);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
                 }
                 else
                 {
@@ -93,6 +115,65 @@ namespace VLV2014Test.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult GetBidNbr()
+        {
+            if (User.Identity.IsAuthenticated == false) return RedirectToAction("Account/Register");
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult GetBidNbr(GetBidNbrViewModel m)
+        {
+            if (ModelState.IsValid == true)
+            {
+                Bidder bidder = MvcApplication.SiteDataMgr.GetBidder(CommonSiteInfo.EventIdent, m.BidNbr);
+                // check that we have assigned the biddger to a login account
+                if (bidder != null)
+                {
+                    if (bidder.LogonAccountID == new Guid("00000000-0000-0000-0000-000000000000"))
+                    {
+                        if (m.BidderKey == bidder.BidderKey)
+                        {
+                            if (User.Identity.IsAuthenticated == true)
+                            {
+                                string guid = User.Identity.GetUserId();
+                                // add the ASP.NET Identity to the Bidder record for use at next logon
+                                MvcApplication.SiteDataMgr.UpdateBidderWithLogonID(CommonSiteInfo.EventIdent, bidder, new Guid(guid));
+                                //reload bidder so we are sure we have everything
+                                bidder = MvcApplication.SiteDataMgr.GetBidder(CommonSiteInfo.EventIdent, m.BidNbr);
+                                // save Bidder as a session variable
+                                Session["Bidder"] = bidder;
+                                string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+                                MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, User.Identity.GetUserId(), "Bidder assigned to logon ID;", ipAddress);
+                                return RedirectToAction("Index", "Home");
+                            }
+
+
+                            return RedirectToAction("Register");
+                        }
+                        else
+                        {
+                            // bidder key doesn't match
+                            ModelState.AddModelError("BidderKey", "Bidder Key is not correct");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("BidNbr", "Bid Number already in use. See Help Desk.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("BidNbr", "Bid number not found in database.  Try again or see Help Desk.");
+                }
+            }
+
+            return View(m);
         }
 
         //

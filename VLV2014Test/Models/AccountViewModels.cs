@@ -60,4 +60,15 @@ namespace VLV2014Test.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class GetBidNbrViewModel
+    {
+        [Required]
+        [Display(Name = "Bid Number")]
+        public string BidNbr { get; set; }
+
+        [Required]
+        [Display(Name = "Bidder Key")]
+        public string BidderKey { get; set; }
+    }
 }

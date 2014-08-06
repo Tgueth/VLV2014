@@ -1,15 +1,16 @@
-﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.RevenueItems
+﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.Tables
 @using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
 
 		<div id="TMGPrototype2"><div class="ic"></div>
 			<h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
 			<ul class='sets'>
-				<li data-setName="Food Stations">
-					<ul>
-                        @if(Model == null || Model.Count <= 0)
+                <li data-setname="Carving Station">
+                    <ul>
+                        @{Table carving = Model["Carving Station"];}
+                        @if (Model == null || Model.Count <= 0)
                         {
-                             <li data-srcPreview="../images/red1.jpg">
+                            <li data-srcpreview="../images/carving_station.jpg">
                                 <div>
                                     <div class="content">
                                         <img src="../images/red_wine.jpg" alt="">
@@ -17,36 +18,219 @@
                                         <p>Please check back later.</p>
                                     </div>
                                 </div>
-                             </li>
+                            </li>
                         }
                         else
-                        { 
-                            foreach(RevenueItem food in Model)
+                        {
+                            foreach (RevenueItem food in carving)
                             {
-                            <li data-srcPreview="../images/red1.jpg">
+                                <li data-srcpreview="../images/carving_station.jpg">
+                                    <div>
+                                        <div class="content">
+                                            @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                            {
+                                                <img src="../images/red_wine.jpg" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
+                                            }
+                                            <h3>@food.AssignedTable</h3>
+                                            <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                            <ul>
+                                                <li><span>Description:</span> @food.Description</li>
+                                            </ul>
+                                            <div class="alright"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li data-setname="Vegetarian">
+                    <ul>
+                        @{Table veggie = Model["Vegetarian"];}
+                        @if (Model == null || Model.Count <= 0)
+                        {
+                            <li data-srcpreview="../images/vegetarian.jpg">
                                 <div>
                                     <div class="content">
-                                        @if (food.PictureLink == null ||  food.PictureLink.Image == null)
-                                        {
-                                            <img src="../images/red_wine.jpg" alt="">
-                                        }
-                                        else
-                                        {
-                                            <img src="@food.PictureLink.Image" alt="">
-                                        }
-                                        <h3>@food.AssignedTable</h3>
-                                        <p style="font-weight:bold; font-size:16pt">@food.Name</p>
-                                        <ul>
-                                            <li><span>Description:</span> @food.Description</li>
-                                        </ul>
-                                        <div class="alright"></div>
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of foods is not yet available</h3>
+                                        <p>Please check back later.</p>
                                     </div>
                                 </div>
                             </li>
+                        }
+                        else
+                        {
+                            foreach (RevenueItem food in veggie)
+                            {
+                                <li data-srcpreview="../images/vegetarian.jpg">
+                                    <div>
+                                        <div class="content">
+                                            @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                            {
+                                                <img src="../images/red_wine.jpg" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
+                                            }
+                                            <h3>@food.AssignedTable</h3>
+                                            <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                            <ul>
+                                                <li><span>Description:</span> @food.Description</li>
+                                            </ul>
+                                            <div class="alright"></div>
+                                        </div>
+                                    </div>
+                                </li>
                             }
                         }
-					</ul>
-				</li>
+                    </ul>
+                </li>
+                <li data-setname="Greektown">
+                    <ul>
+                        @{Table greek = Model["Greektown"];}
+                        @if (Model == null || Model.Count <= 0)
+                        {
+                            <li data-srcpreview="../images/greek_food.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of foods is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            foreach (RevenueItem food in greek)
+                            {
+                                <li data-srcpreview="../images/greek_food.jpg">
+                                    <div>
+                                        <div class="content">
+                                            @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                            {
+                                                <img src="../images/red_wine.jpg" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
+                                            }
+                                            <h3>@food.AssignedTable</h3>
+                                            <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                            <ul>
+                                                <li><span>Description:</span> @food.Description</li>
+                                            </ul>
+                                            <div class="alright"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+                <li data-setname="Dessert & Coffee">
+                    <ul>
+                        @{Table dessert_coffee = Model["Dessert & Coffee"];}
+                        @if (Model == null || Model.Count <= 0)
+                        {
+                            <li data-srcpreview="../images/dessert_coffee.jpg">
+                                <div>
+                                    <div class="content">
+                                        <img src="../images/red_wine.jpg" alt="">
+                                        <h3>List of foods is not yet available</h3>
+                                        <p>Please check back later.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            foreach (RevenueItem food in dessert_coffee)
+                            {
+                                <li data-srcpreview="../images/dessert_coffee.jpg">
+                                    <div>
+                                        <div class="content">
+                                            @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                            {
+                                                <img src="../images/red_wine.jpg" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
+                                            }
+                                            <h3>@food.AssignedTable</h3>
+                                            <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                            <ul>
+                                                <li><span>Description:</span> @food.Description</li>
+                                            </ul>
+                                            <div class="alright"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+
+
+
+
+
+                <!-- Old Code that include foreach -->
+
+                 <!-- @foreach (Table foodTable in Model)
+                {
+                    <li data-setname="@foodTable.TableID">
+                        <ul>
+                            @if (Model == null || Model.Count <= 0)
+                            {
+                                <li data-srcpreview="../images/carving_station.jpg">
+                                    <div>
+                                        <div class="content">
+                                            <img src="../images/red_wine.jpg" alt="">
+                                            <h3>List of foods is not yet available</h3>
+                                            <p>Please check back later.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                foreach (RevenueItem food in foodTable)
+                                {
+                                    <li data-srcpreview="../images/carving_station.jpg">
+                                        <div>
+                                            <div class="content">
+                                                @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                                {
+                                                    <img src="../images/red_wine.jpg" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
+                                                }
+                                                <h3>@food.AssignedTable</h3>
+                                                <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                                <ul>
+                                                    <li><span>Description:</span> @food.Description</li>
+                                                </ul>
+                                                <div class="alright"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                } 
+                    -->
 			</ul>
 		</div>
 
