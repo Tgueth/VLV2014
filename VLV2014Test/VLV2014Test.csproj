@@ -198,8 +198,10 @@
     <Content Include="images\Cabernet_Sauvignon_Grapes.jpg" />
     <Content Include="images\Caesar_Salad_anchovy_vinaigrette.jpg" />
     <Content Include="images\carving_station.jpg" />
+    <Content Include="images\Chateau Saint Barbe Bordeaux.jpg" />
     <Content Include="images\Choc_banana_pudding.jpg" />
     <Content Include="images\ChoiceProperties.gif" />
+    <Content Include="images\Cinelli Columbini Donatella.jpg" />
     <Content Include="images\Columna_Albarino_2010.jpg" />
     <Content Include="images\cont_bg.png" />
     <Content Include="images\dessert_coffee.jpg" />
@@ -229,6 +231,8 @@
     <Content Include="images\menu_sep.png" />
     <Content Include="images\Montgras_Carmenere.jpg" />
     <Content Include="images\Montinore_Borealis_White_Blend.JPG" />
+    <Content Include="images\moscato dasti.jpg" />
+    <Content Include="images\moscato_mango.jpg" />
     <Content Include="images\NinoSalvaggio.jpg" />
     <Content Include="images\nino_salvaggio_logo_color.jpg" />
     <Content Include="images\Oliver Hill Red Silk Shiraz.jpg" />
@@ -250,6 +254,7 @@
     <Content Include="images\red2.jpg" />
     <Content Include="images\red3.jpg" />
     <Content Include="images\red_wine.jpg" />
+    <Content Include="images\Righetti Amarone.jpg" />
     <Content Include="images\Roasted_garlic_hummus.jpg" />
     <Content Include="images\roasted_vegetable_pizza.jpg" />
     <Content Include="images\Roast_Turkey_Lingonberry_Sauce.png" />
@@ -265,6 +270,7 @@
     <Content Include="images\spark2.jpg" />
     <Content Include="images\sparkl_wine.jpg" />
     <Content Include="images\Spinach_Three_Cheese_Crepes.JPG" />
+    <Content Include="images\Stella Rosa black.jpg" />
     <Content Include="images\the-capital-grille.png" />
     <Content Include="images\Trig_Point_merlot.jpg" />
     <Content Include="images\TSClogoSmall.jpg" />
@@ -274,11 +280,13 @@
     <Content Include="images\VivaLaVinoSmaller.jpg" />
     <Content Include="images\VLV_Fun_People.jpg" />
     <Content Include="images\VLV_fun_People_2.jpg" />
+    <Content Include="images\VLV_fun_People_3.jpg" />
     <Content Include="images\Weingut_Josef_Bauer.jpg" />
     <Content Include="images\white1.jpg" />
     <Content Include="images\white2.jpg" />
     <Content Include="images\white3.jpg" />
     <Content Include="images\white_wine.jpg" />
+    <Content Include="images\Wilson and Wilson Cabernet.jpg" />
     <Content Include="js\bgStretch.js" />
     <Content Include="js\forms.js" />
     <Content Include="js\html5shiv.js" />
