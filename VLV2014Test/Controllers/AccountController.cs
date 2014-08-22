@@ -26,6 +26,11 @@ namespace VLV2014Test.Controllers
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
+            // need this so we can use email addresses for user IDs
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -79,7 +84,6 @@ namespace VLV2014Test.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            Bidder bidder = (Bidder)Session["Bidder"];
             string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
 
             if (ModelState.IsValid)
@@ -92,15 +96,8 @@ namespace VLV2014Test.Controllers
                     if (result.Succeeded == true)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        if (bidder == null)
-                        {
-                            MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, user.Id, "Registration occurred for " + model.UserName, ipAddress);
-                            return RedirectToAction("GetBidNbr");
-                        }
                         // now add the ASP.NET identity to the Bidder record for next logon
-                        MvcApplication.SiteDataMgr.UpdateBidderWithLogonID(CommonSiteInfo.EventIdent, bidder, new Guid(user.Id));
-                        MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, user.Id, "Registration took place for " + model.UserName + " with existing Bidder.", ipAddress);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Registered", "Account");
                     }
                     else
                     {
@@ -115,6 +112,11 @@ namespace VLV2014Test.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public ActionResult Registered()
+        {
+            return View();
         }
 
         [AllowAnonymous]

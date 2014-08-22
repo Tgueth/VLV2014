@@ -1,0 +1,63 @@
+﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.Tables
+@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@using VLV2014Test.Models
+
+		<div id="TMGPrototype2"><div class="ic"></div>
+			<h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+			<ul class='sets'>
+                @foreach (Table foodTable in Model)
+                {
+                    <li data-setname="@foodTable.TableID">
+                        <ul>
+                            @if (Model == null || Model.Count <= 0)
+                            {
+                                <li data-srcpreview="../images/red1.jpg">
+                                    <div>
+                                        <div class="content">
+                                            <img src="../images/red_wine.jpg" alt="">
+                                            <h3>List of foods is not yet available</h3>
+                                            <p>Please check back later.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                foreach (RevenueItem food in foodTable)
+                                {
+                                    <li data-srcpreview="../images/red1.jpg">
+                                        <div>
+                                            <div class="content">
+                                                @if (food.PictureLink == null || food.PictureLink.Image == null)
+                                                {
+                                                    <img src="../images/red_wine.jpg" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img src="@food.PictureLink.Image" alt="">
+                                                }
+                                                <h3>@food.AssignedTable</h3>
+                                                <p style="font-weight:bold; font-size:16pt">@food.Name</p>
+                                                <ul>
+                                                    <li><span>Description:</span> @food.Description</li>
+                                                </ul>
+                                                <div class="alright"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+			</ul>
+		</div>
+
+@section Scripts
+{
+    <script>
+        $(window).load(function () {
+            $('#TMGPrototype2').TMGPrototype2({});
+        });
+    </script>
+}
