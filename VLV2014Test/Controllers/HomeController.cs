@@ -50,6 +50,11 @@ namespace VLV2014Test.Controllers
             return View();
         }
 
+        public ActionResult PurchaseTicketNS()
+        {
+            return View();
+        }
+
         public ActionResult Sponsors()
         {
             Sponsors AllSponsors = MvcApplication.SiteDataMgr.GetSponsors(CommonSiteInfo.EventIdent);
