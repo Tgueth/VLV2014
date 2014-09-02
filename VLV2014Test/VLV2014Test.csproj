@@ -229,6 +229,7 @@
     <Content Include="images\Alliance Mobile Health Logo.png" />
     <Content Include="images\Andretti 2012 Napa Valley Cabernet Sauvignon.jpg" />
     <Content Include="images\Andretti 2012 Napa Valley Chardonnay.jpg" />
+    <Content Include="images\Andretti Winery.png" />
     <Content Include="images\Apple_Crisp.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\Baron_Fuente_Champagne.jpg" />
@@ -250,7 +251,9 @@
     <Content Include="images\dessert_coffee.jpg" />
     <Content Include="images\dreamstime_s_1890011.jpg" />
     <Content Include="images\dsf real deal logo.jpg" />
+    <Content Include="images\English Gardens.png" />
     <Content Include="images\EnglishAuctioneer.jpg" />
+    <Content Include="images\Fairfield Inn Holland MI.jpg" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\Foods and Wine.png" />
     <Content Include="images\Foxglove Zinfandel.jpg" />
@@ -258,6 +261,7 @@
     <Content Include="images\Fun People at Viva La Vino Troy 1.jpg" />
     <Content Include="images\Fun People at Viva La Vino Troy.jpg" />
     <Content Include="images\garnacha-de-fuego.jpg" />
+    <Content Include="images\GIANT Escape 3 Blue Bicycle.png" />
     <Content Include="images\Gourmet_Coffee.jpg" />
     <Content Include="images\greek_food.jpg" />
     <Content Include="images\Happy faces of Viva La Vino.JPG" />
@@ -298,6 +302,7 @@
     <Content Include="images\Pine_Ridge_Chenin.jpg" />
     <Content Include="images\prevnext.png" />
     <Content Include="images\prime-rib_a_jus.jpg" />
+    <Content Include="images\procarwash_logo copy 2.jpg" />
     <Content Include="images\red1.jpg" />
     <Content Include="images\red2.jpg" />
     <Content Include="images\red3.jpg" />
@@ -309,6 +314,8 @@
     <Content Include="images\Roederer_Estate.jpg" />
     <Content Include="images\rotary emblem.GIF" />
     <Content Include="images\Ryan_Patrick_Unoaked_Chardonnay.png" />
+    <Content Include="images\Sara Blaine Blue Topaz Necklace and Earrings Set.jpg" />
+    <Content Include="images\Scott Kay Cufflinks.jpg" />
     <Content Include="images\SC_MASTER_LOGO copy.jpg" />
     <Content Include="images\search_icon.png" />
     <Content Include="images\Sequin_Pinot_Grigio.jpg" />
@@ -320,7 +327,9 @@
     <Content Include="images\Spinach_Three_Cheese_Crepes.JPG" />
     <Content Include="images\Stella Rosa black.jpg" />
     <Content Include="images\the-capital-grille.png" />
+    <Content Include="images\Toronto Marriott.png" />
     <Content Include="images\Trig_Point_merlot.jpg" />
+    <Content Include="images\Troy Community Center.png" />
     <Content Include="images\TSClogoSmall.jpg" />
     <Content Include="images\vegetarian.jpg" />
     <Content Include="images\Verterra_Medium_Sweet_Riesling.png" />
@@ -335,6 +344,7 @@
     <Content Include="images\white3.jpg" />
     <Content Include="images\white_wine.jpg" />
     <Content Include="images\Wilson and Wilson Cabernet.jpg" />
+    <Content Include="images\Zeghani Diamond Necklace and Earrings Set.jpg" />
     <Content Include="js\bgStretch.js" />
     <Content Include="js\forms.js" />
     <Content Include="js\html5shiv.js" />
