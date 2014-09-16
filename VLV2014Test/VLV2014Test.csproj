@@ -226,6 +226,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\4C_Bank.jpg" />
+    <Content Include="images\African Safari.png" />
     <Content Include="images\Alliance Mobile Health Logo.png" />
     <Content Include="images\AllProBenefitsBusinessCard-1.jpg" />
     <Content Include="images\Andretti 2012 Napa Valley Cabernet Sauvignon.jpg" />
@@ -275,6 +276,7 @@
     <Content Include="images\Landmark_PN_Overlook.jpg" />
     <Content Include="images\leg_of_lamb.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\magic-kingdom-address.jpg" />
     <Content Include="images\Mark Mullin Logo.png" />
     <Content Include="images\marker.png" />
     <Content Include="images\mashed_potatoes.jpg" />
@@ -289,6 +291,7 @@
     <Content Include="images\NinoSalvaggio.jpg" />
     <Content Include="images\nino_salvaggio_logo_color.jpg" />
     <Content Include="images\Oliver Hill Red Silk Shiraz.jpg" />
+    <Content Include="images\opus one.jpg" />
     <Content Include="images\Oyster_Bay_Sauvignon_Blanc.png" />
     <Content Include="images\page2_img1.jpg" />
     <Content Include="images\page3_img1.jpg" />
@@ -308,6 +311,7 @@
     <Content Include="images\red2.jpg" />
     <Content Include="images\red3.jpg" />
     <Content Include="images\red_wine.jpg" />
+    <Content Include="images\Rehmann JPEG.jpg" />
     <Content Include="images\Righetti Amarone.jpg" />
     <Content Include="images\Roasted_garlic_hummus.jpg" />
     <Content Include="images\roasted_vegetable_pizza.jpg" />
@@ -328,6 +332,7 @@
     <Content Include="images\Spinach_Three_Cheese_Crepes.JPG" />
     <Content Include="images\Stella Rosa black.jpg" />
     <Content Include="images\the-capital-grille.png" />
+    <Content Include="images\thumb_SpiderClient.jpg" />
     <Content Include="images\Toronto Marriott.png" />
     <Content Include="images\Trig_Point_merlot.jpg" />
     <Content Include="images\Troy Community Center.png" />
@@ -345,6 +350,7 @@
     <Content Include="images\white3.jpg" />
     <Content Include="images\white_wine.jpg" />
     <Content Include="images\Wilson and Wilson Cabernet.jpg" />
+    <Content Include="images\wyndham-cypress-palms.jpg" />
     <Content Include="images\Zeghani Diamond Necklace and Earrings Set.jpg" />
     <Content Include="js\bgStretch.js" />
     <Content Include="js\forms.js" />
