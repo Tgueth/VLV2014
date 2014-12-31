@@ -18,9 +18,14 @@ namespace VLV2014Test.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
+        private IDataManager dataMgr = null;
+        private IEvent eventID = null;
+
+        public AccountController(IDataManager dataMgr, IEvent eventID)
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
+            this.dataMgr = dataMgr;
+            this.eventID = eventID;
         }
 
         public AccountController(UserManager<ApplicationUser> userManager)
@@ -133,7 +138,7 @@ namespace VLV2014Test.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                Bidder bidder = MvcApplication.SiteDataMgr.GetBidder(CommonSiteInfo.EventIdent, m.BidNbr);
+                Bidder bidder = dataMgr.GetBidder(eventID, m.BidNbr);
                 // check that we have assigned the biddger to a login account
                 if (bidder != null)
                 {
@@ -145,13 +150,13 @@ namespace VLV2014Test.Controllers
                             {
                                 string guid = User.Identity.GetUserId();
                                 // add the ASP.NET Identity to the Bidder record for use at next logon
-                                MvcApplication.SiteDataMgr.UpdateBidderWithLogonID(CommonSiteInfo.EventIdent, bidder, new Guid(guid));
+                                dataMgr.UpdateBidderWithLogonID(eventID, bidder, new Guid(guid));
                                 //reload bidder so we are sure we have everything
-                                bidder = MvcApplication.SiteDataMgr.GetBidder(CommonSiteInfo.EventIdent, m.BidNbr);
+                                bidder = dataMgr.GetBidder(eventID, m.BidNbr);
                                 // save Bidder as a session variable
                                 Session["Bidder"] = bidder;
                                 string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
-                                MvcApplication.SiteDataMgr.CreateLogonEvent(CommonSiteInfo.EventIdent, bidder, User.Identity.GetUserId(), "Bidder assigned to logon ID;", ipAddress);
+                                dataMgr.CreateLogonEvent(eventID, bidder, User.Identity.GetUserId(), "Bidder assigned to logon ID;", ipAddress);
                                 return RedirectToAction("Index", "Home");
                             }
 

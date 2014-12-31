@@ -12,6 +12,15 @@ namespace VLV2014Test.Controllers
 {
     public class HomeController : Controller
     {
+        private IDataManager dataMgr = null;
+        private IEvent eventID;
+
+        public HomeController(IDataManager dataMgr, IEvent eventID)
+        {
+            this.dataMgr = dataMgr;
+            this.eventID = eventID;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -33,9 +42,9 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Wines()
         {
-            WineList red = MvcApplication.SiteDataMgr.GetWinesByClass(CommonSiteInfo.EventIdent, "Red Wine");
-            WineList white = MvcApplication.SiteDataMgr.GetWinesByClass(CommonSiteInfo.EventIdent, "White Wine");
-            WineList dessert = MvcApplication.SiteDataMgr.GetWinesByClass(CommonSiteInfo.EventIdent, "Dessert Wine");
+            WineList red = dataMgr.GetWinesByClass(eventID, "Red Wine");
+            WineList white = dataMgr.GetWinesByClass(eventID, "White Wine");
+            WineList dessert = dataMgr.GetWinesByClass(eventID, "Dessert Wine");
             
             WineGroups wineGroups = new WineGroups();
             wineGroups.Add(red);
@@ -57,7 +66,7 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Sponsors()
         {
-            Sponsors AllSponsors = MvcApplication.SiteDataMgr.GetSponsors(CommonSiteInfo.EventIdent);
+            Sponsors AllSponsors = dataMgr.GetSponsors(eventID);
             return View(AllSponsors);
         }
 
@@ -65,10 +74,10 @@ namespace VLV2014Test.Controllers
         {
             AuctionGroup auctions = new AuctionGroup();
 
-            AuctionItems liveAuction = MvcApplication.SiteDataMgr.GetAuctionItemsByType(CommonSiteInfo.EventIdent, "Live Auction");
+            RevenueItems liveAuction = dataMgr.GetRevenueItemsByType(eventID, "Live Auction");
             auctions.Add(liveAuction);
 
-            AuctionItems silentAuction = MvcApplication.SiteDataMgr.GetAuctionItemsByType(CommonSiteInfo.EventIdent, "Silent Auction");
+            RevenueItems silentAuction = dataMgr.GetRevenueItemsByType(eventID, "Silent Auction");
             auctions.Add(silentAuction);
 
             return View(auctions);
@@ -76,7 +85,7 @@ namespace VLV2014Test.Controllers
 
         public ActionResult EventSchedule()
         {
-            EventActivities acts = MvcApplication.SiteDataMgr.GetEventActivities(CommonSiteInfo.EventIdent);
+            EventActivities acts = dataMgr.GetEventActivities(eventID);
 
             return View(acts);
         }
@@ -88,8 +97,8 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Foods()
         {
-            RevenueItems foods = MvcApplication.SiteDataMgr.GetRevenueItemsByType(CommonSiteInfo.EventIdent,"Foods");
-            Tables foodTables = MvcApplication.SiteDataMgr.GetTablesForAuctionSaleType(CommonSiteInfo.EventIdent, "Foods");
+            RevenueItems foods = dataMgr.GetRevenueItemsByType(eventID, "Foods");
+            Tables foodTables = dataMgr.GetTablesForAuctionSaleType(eventID, "Foods");
 
             return View(foodTables);
         }

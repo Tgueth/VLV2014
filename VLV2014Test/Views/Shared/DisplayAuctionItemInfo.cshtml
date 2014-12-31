@@ -1,5 +1,5 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
-@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.AuctionItem
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.RevenueItem
 
 <li data-srcpreview="../images/red1.jpg">
     <div>
@@ -12,7 +12,7 @@
                 <p>@Model.Description</p>
             }
             <p>Valued at: @Model.ItemValue.ToString("C")</p>
-            <p> @(Model.DonatedBy != null ? "Donated by:" + Model.DonatedBy.Company : "")</p>
+            <p> @(Model.DonatedByLink > -1 ? "Donated by:" + Model.DonatedByLink : "")</p>
             <ul>
                 <li></li>
             </ul>

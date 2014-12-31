@@ -1,5 +1,5 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
-@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.AuctionItems
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.RevenueItems
 
 <ul>
     @if (Model == null || Model.Count <= 0)
@@ -16,7 +16,7 @@
     }
     else
     {
-        foreach (AuctionItem item in Model)
+        foreach (RevenueItem item in Model)
         {
             @Html.Partial("DisplayAuctionItemInfo", item)
         }
