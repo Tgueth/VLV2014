@@ -4,17 +4,12 @@
 namespace VLV2014Test.App_Start
 {
     using System;
-    using System.Configuration;
-    using System.Data;
-    using System.Data.Common;
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
-
-    using BinaryStarTechnology.CharityEventRevenueMgmtClasses;
 
     public static class NinjectWebCommon 
     {
@@ -47,18 +42,8 @@ namespace VLV2014Test.App_Start
             var kernel = new StandardKernel();
             try
             {
-                string connString = System.Configuration.ConfigurationManager.ConnectionStrings["VivaLaVinoConnectionString"].ConnectionString;
-                DbProviderFactory factory = DbProviderFactories.GetFactory(ConfigurationManager.ConnectionStrings["VivaLaVinoConnectionString"].ProviderName);
-                DataManager dataMgr = new DataManager(factory, connString);
-
-                string strEvent = System.Configuration.ConfigurationManager.AppSettings["EventID"].ToString();
-                Event eventID = (Event)dataMgr.GetEvent(Convert.ToInt32(strEvent));
-                Event EventID = eventID;
-
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                kernel.Bind<IDataManager>().ToConstant(dataMgr);
-                kernel.Bind<IEvent>().ToConstant(eventID);
 
                 RegisterServices(kernel);
                 return kernel;
