@@ -23,7 +23,7 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(this.eventID);
         }
 
         public ActionResult About()
@@ -56,7 +56,7 @@ namespace VLV2014Test.Controllers
 
         public ActionResult PurchaseTicket()
         {
-            return View();
+            return View(eventID);
         }
 
         public ActionResult PurchaseTicketNS()
@@ -75,10 +75,14 @@ namespace VLV2014Test.Controllers
             AuctionGroup auctions = new AuctionGroup();
 
             RevenueItems liveAuction = dataMgr.GetRevenueItemsByType(eventID, "Live Auction");
-            auctions.Add(liveAuction);
+            if (liveAuction != null)
+            { auctions.Add(liveAuction); }
 
             RevenueItems silentAuction = dataMgr.GetRevenueItemsByType(eventID, "Silent Auction");
-            auctions.Add(silentAuction);
+            if (silentAuction != null)
+            { auctions.Add(silentAuction); }
+
+            if (auctions.EventID == null) auctions.EventID = this.eventID;
 
             return View(auctions);
         }
@@ -86,6 +90,8 @@ namespace VLV2014Test.Controllers
         public ActionResult EventSchedule()
         {
             EventActivities acts = dataMgr.GetEventActivities(eventID);
+            if (acts == null) acts = new EventActivities();
+            if (acts.EventID == null) acts.EventID = eventID;
 
             return View(acts);
         }
@@ -99,6 +105,16 @@ namespace VLV2014Test.Controllers
         {
             RevenueItems foods = dataMgr.GetRevenueItemsByType(eventID, "Foods");
             Tables foodTables = dataMgr.GetTablesForAuctionSaleType(eventID, "Foods");
+
+            if ( foodTables == null )
+            { 
+                foodTables = new Tables();
+            }
+
+            if ( foodTables.EventID == null)
+            {
+                foodTables.EventID = this.eventID;
+            }
 
             return View(foodTables);
         }

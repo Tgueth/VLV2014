@@ -3,49 +3,52 @@
 
 <div id="TMGPrototype2">
     <div class="ic"></div>
-    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventID.EventName"></a></h1>
     <ul class='sets'>
-        <li data-setname="Viva La Vino 2014">
+        <li data-setname="@Model.EventID.EventName">
             <ul>
                 <li data-srcpreview="../images/red1.jpg">
                     <div>
                         <div class="content">
                             <img src="../images/Fun People at Viva La Vino Troy 1.jpg" alt="">
-                            <h3>Wine Tasting Fund Raiser</h3>
+                            <h3>@Model.EventID.EventName</h3>
                             <p></p>
                             <p></p>
                             <table>
                                 <tbody>
-                                    @{ 
+                                    @{
                                         DateTime lastTime = DateTime.Now.AddYears(-2);
                                         bool firstPass = true;
-                                     }
-                                    @if(Model != null && Model.Count > 0)
-                                    {
-                                        lastTime = Model[0].TimeOfActivity.AddMinutes(-1);
-                                    }
-                                    @foreach (EventActivity act in Model)
-                                    {
-                                        if ( act.TimeOfActivity != lastTime && firstPass == false)
+                                        if ( Model == null || Model.Count <= 0)
                                         {
-                                            <tr style="font-size:6pt"><td colspan="2">&nbsp;</td></tr>
+                                            <tr><td style="font-weight:bold;font-size:16pt">Event Schedule is not available at this time</td></tr>
                                         }
-                                        firstPass = false;
-                                        
-                                        <tr style="font-weight:bold;font-size:10pt;color:black">
+                                        else
+                                        {
+                                            lastTime = Model[0].TimeOfActivity.AddMinutes(-1);
+                                            foreach (EventActivity act in Model)
+                                            {
+                                                if (act.TimeOfActivity != lastTime && firstPass == false)
+                                                {
+                                                    <tr style="font-size:6pt"><td colspan="2">&nbsp;</td></tr>
+                                                }
+                                                firstPass = false;
 
-                                            @if (act.TimeOfActivity != lastTime)
-                                            {
-                                                lastTime = act.TimeOfActivity;
-                                                <td style="text-align:right;font-size:9pt">@act.TimeOfActivity.ToShortTimeString()</td>
+                                                <tr style="font-weight:bold;font-size:10pt;color:black">
+                                                    @if (act.TimeOfActivity != lastTime)
+                                                    {
+                                                        lastTime = act.TimeOfActivity;
+                                                        <td style="text-align:right;font-size:9pt">@act.TimeOfActivity.ToShortTimeString()</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>&nbsp;</td>
+                                                    }
+                                                    <td>&nbsp;</td>
+                                                    <td>@act.ActivityDetail</td>
+                                                </tr>
                                             }
-                                                else
-                                            {
-                                                <td>&nbsp;</td>
-                                            }
-                                            <td>&nbsp;</td>
-                                            <td>@act.ActivityDetail</td>
-                                        </tr>
+                                        }
                                     }
                                 </tbody>
                             </table>

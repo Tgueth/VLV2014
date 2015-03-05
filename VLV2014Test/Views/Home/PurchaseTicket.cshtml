@@ -1,20 +1,23 @@
-﻿
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.IEvent
+
 @{
     ViewBag.Title = "PurchaseTicket";
 }
 
 <div id="TMGPrototype2">
     <div class="ic"></div>
-    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventName"></a></h1>
     <ul class='sets'>
         <li data-setname="Ticket(s)">
             <ul>
                 <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
                     <div class="content">
                         <h3 style="font-weight:bold">
-                            <a href="http://events.constantcontact.com/register/event?llr=8kyl96lab&oeidk=a07e925m32731522af0" target="_blank">
+                            <!--a href="http://events.constantcontact.com/register/event?llr=8kyl96lab&oeidk=a07e925m32731522af0" target="_blank">
                                 <span style="text-decoration:underline">Click here to purchase your tickets.</span>
-                            </a>
+                            </a -->
+                            <span style="font-weight:bold;font-size:16">Tickets are not available at this time.  Please check back.</span>
                         </h3>
                         <p style="font-weight:bold; font-size:larger">Please read below before purchasing:</p>
                         <p>
