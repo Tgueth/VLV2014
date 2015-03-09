@@ -1,9 +1,10 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @model BinaryStarTechnology.CharityEventRevenueMgmtClasses.IEvent
+           @{ string a = Model.EventLogo.Image;}
 <div id="TMGPrototype2">
     <div class="ic">
         <h1>
-            <p><a href="http://vivalavinotroy.com"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventName"/></a></p>
+            <p><a href="@Model.EventLogo.Link"><img src="@Model.EventLogo.Image" alt="@Model.EventName"/></a></p>
         </h1>
     </div>
     <ul class='sets'>
