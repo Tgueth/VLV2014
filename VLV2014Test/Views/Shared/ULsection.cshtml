@@ -5,14 +5,14 @@
         <div class="content">
             <img src="@Model.pictureLink2" alt="">
             <h3>@Model.header</h3>
-            <p>@Model.hLine1</p>
-            <p>@Model.hLine2</p>
+            <p>@Html.Raw( Model.hLine1)</p>
+            <p>@Html.Raw( Model.hLine2)</p>
             <ul>
-                <li><span>@Model.lLine1</span></li>
-                <li><span>@Model.lLine2</span></li>
-                <li><span>@Model.lLine3</span></li>
-                <li><span>@Model.lLine4</span></li>
-                <li><span>@Model.lLine5</span></li>
+                <li><span>@Html.Raw(Model.lLine1)</span></li>
+                <li><span>@Html.Raw(Model.lLine2)</span></li>
+                <li><span>@Html.Raw(Model.lLine3)</span></li>
+                <li><span>@Html.Raw(Model.lLine4)</span></li>
+                <li><span>@Html.Raw(Model.lLine5)</span></li>
             </ul>
             <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
         </div>
