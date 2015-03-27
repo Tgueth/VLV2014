@@ -14,6 +14,8 @@
     <ul class='sets'>
         <li data-setname="@Model.EventName">
             <ul>
+                @{ TabSectionView sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg", "../images/Happy faces of Viva La Vino.JPG", "Wine Tasting Fund Raiser", "", "", Model.EventDate.ToString("MMM dd, yyyy"), "6:30 PM - 10:30 PM", "", "", "", "A Fun Evening of Great Wine, Good Food and Fantastic People!", "");}
+                @{Html.RenderPartial("ULsection", sec1);}
                 <li data-srcpreview="../images/dreamstime_s_1890011.jpg">
                     <div>
                         <div class="content">
