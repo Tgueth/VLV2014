@@ -18,4 +18,10 @@ namespace VLV2014Test.Models
         public Sponsor Valet { get; set; }
         public Sponsor Music { get; set; } 
     }
+
+    public class TabSectioinView
+    {
+        public string pictureLink1 { get; set; }
+        public string pictureLink2 { get; set; }
+    }
 }

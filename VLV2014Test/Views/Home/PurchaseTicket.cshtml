@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "PurchaseTicket";
+    MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
 }
 
 <div id="TMGPrototype2">
@@ -39,6 +40,11 @@
         </li>
     </ul>
 </div>
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
+}
 
 @section Scripts
 {

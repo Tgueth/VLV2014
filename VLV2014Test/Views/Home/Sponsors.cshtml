@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Sponsors";
     string link=null;
+    MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
 }
 
 <div id="TMGPrototype2">
@@ -74,6 +75,11 @@
         </li>
     </ul>
 </div>
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
+}
 
 @section Scripts
 {

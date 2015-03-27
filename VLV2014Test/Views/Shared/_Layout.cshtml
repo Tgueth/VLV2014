@@ -40,17 +40,17 @@
                         <a href="#"></a> -->
                     </div>
                     <nav class="">
-                        <ul class="sf-menu">
-                            <li class="current">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Tickets","PurchaseTicket","Home")</li>
-                            <li>@Html.ActionLink("Event Schedule", "EventSchedule", "Home")</li>
-                            <li>@Html.ActionLink("Foods", "Foods", "Home")</li>
-                            <li>@Html.ActionLink("Wines", "Wines", "Home")</li>
-                            <li>@Html.ActionLink("Auction Items", "AuctionItems", "Home")</li>
-                            <li>@Html.ActionLink("Sponsors", "Sponsors", "Home")</li>
-                            <!--<li>@Html.ActionLink("Bidder Signup","BidderSignup","Home")</li> -->
-                            <li><a href="http://www.troyrotary.net" target="_blank">Troy Rotary</a></li>
-                        </ul>
+                        @if(IsSectionDefined("TopTabs")==true)
+                        { 
+                            @RenderSection("TopTabs",false)
+                        }
+                        else
+                        {
+                            <ul class="sf-menu">
+                                <li class="current">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li><a href="http://www.troyrotary.net" target="_blank">Troy Rotary</a></li>
+                            </ul>
+                         }
                     </nav>
                     <div class="clear"></div>
                 </div>

@@ -1,6 +1,10 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
-@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.IEvent
-           @{ string a = Model.EventLogo.Image;}
+@using VLV2014Test.Models
+@model Event
+@{
+    string a = Model.EventLogo.Image;
+    MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
+}
 <div id="TMGPrototype2">
     <div class="ic">
         <h1>
@@ -94,6 +98,11 @@
         </li>
      </ul>
 </div>
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
+}
 
 @section Scripts
 {

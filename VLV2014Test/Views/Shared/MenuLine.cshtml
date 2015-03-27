@@ -1,0 +1,27 @@
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@model MenuItems
+<ul class="sf-menu">
+    @{
+        bool firstTab = true;
+        if (Model != null && Model.Count > 0)
+        {
+            foreach (MenuItem menuItem in Model)
+            {
+                if (firstTab == true)
+                {
+                    firstTab = false;
+                    <li class="current">@Html.ActionLink(menuItem.Name, menuItem.PageName, menuItem.ControllerName)</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(menuItem.Name, menuItem.PageName, menuItem.ControllerName)</li>
+                }
+            }
+        }
+        else
+        {
+            <li class="current">@Html.ActionLink("Home", "Index", "Home")</li>
+        }
+    }
+    <li><a href="http://www.troyrotary.net" target="_blank">Troy Rotary</a></li>
+</ul>

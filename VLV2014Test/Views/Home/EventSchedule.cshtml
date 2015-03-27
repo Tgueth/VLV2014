@@ -1,6 +1,11 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @model BinaryStarTechnology.CharityEventRevenueMgmtClasses.EventActivities
 
+@{
+    ViewBag.Title = "AuctionItems";
+    MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
+}
+
 <div id="TMGPrototype2">
     <div class="ic"></div>
     <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventID.EventName"></a></h1>
@@ -71,6 +76,11 @@
         </li>
     </ul>
 </div>
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
+}
 
 @section Scripts
 {

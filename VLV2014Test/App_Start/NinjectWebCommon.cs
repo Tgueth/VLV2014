@@ -22,6 +22,7 @@ namespace VLV2014Test.App_Start
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
         public static IEvent EventID = null;
+        public static MenuItems TopTabs = null;
 
         /// <summary>
         /// Starts the application
@@ -55,10 +56,10 @@ namespace VLV2014Test.App_Start
                 DataManager dataMgr = new DataManager(factory, connString);
 
                 string strEvent = System.Configuration.ConfigurationManager.AppSettings["EventID"];
-                //Event eventID =
                 if (strEvent != null)
                 {
                     EventID = dataMgr.GetEvent(Convert.ToInt32(strEvent));
+                    TopTabs = dataMgr.GetMenuItems(EventID, "VivaLaVino");
                 }
 
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -68,11 +69,12 @@ namespace VLV2014Test.App_Start
                 {
                     kernel.Bind<IEvent>().ToConstant((EventID));
                 }
+                kernel.Bind<MenuItems>().ToConstant(TopTabs);
 
                 RegisterServices(kernel);
                 return kernel;
             }
-            catch
+            catch (Exception e)
             {
                 kernel.Dispose();
                 throw;

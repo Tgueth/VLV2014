@@ -2,8 +2,9 @@
 @using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
 @{
-    <!--ViewBag.Title = "Sponsors";-->
+    ViewBag.Title = "Wines";
     string link = null;
+    MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
 }
 
 
@@ -159,6 +160,11 @@
 				</li>
 			</ul>
 		</div>
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
+}
 
 @section Scripts
 {

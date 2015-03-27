@@ -14,16 +14,18 @@ namespace VLV2014Test.Controllers
     {
         private IDataManager dataMgr = null;
         private IEvent eventID;
+        public static MenuItems menuItems = null;
 
-        public HomeController(IDataManager dataMgr, IEvent eventID)
+        public HomeController(IDataManager dataMgr, IEvent eventID, MenuItems items)
         {
             this.dataMgr = dataMgr;
             this.eventID = eventID;
+            menuItems = items;
         }
 
         public ActionResult Index()
         {
-            return View(this.eventID);
+            return View(eventID);
         }
 
         public ActionResult About()

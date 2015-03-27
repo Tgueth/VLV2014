@@ -471,6 +471,8 @@
     <Content Include="Views\Account\Registered.cshtml" />
     <Content Include="Views\Home\PurchaseTicketNS.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Views\Shared\MenuLine.cshtml" />
+    <Content Include="Views\Shared\TabSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
