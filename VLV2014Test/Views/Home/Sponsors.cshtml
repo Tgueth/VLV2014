@@ -15,49 +15,46 @@
             <ul>
                 @if (Model == null || Model.Count <= 0)
                 {
-                    <li data-srcpreview="../images/red1.jpg">
-                        <div>
-                            <div class="content">
-                                <img src="../images/red_wine.jpg" alt="">
-                                <h3>Sponsors</h3>
-                                <p></p>
-                                <p>To be updated</p>
-                                <ul></ul>
-                                <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
-                            </div>
-                        </div>
-                    </li>
+                    TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
+                                                "../images/red_wine.jpg",     // pictureLink2
+                                                "Sponsors",
+                                                "",
+                                                "To be updated.",
+                                                "",
+                                                "",
+                                                "",
+                                                "",
+                                                "",
+                                                "",
+                                                "");
+                    { Html.RenderPartial("ULsection", sec1); }
                 }
                 else
                 {
                     foreach (Sponsor sponsor in Model)
                     {
-                        <li data-srcpreview="../images/red1.jpg">
-                            <div>
-                                <div class="content">
-                                    @if (sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
-                                    {
-                                        link = sponsor.SponsorImage.Link;
-                                        <a href="@link" target="_blank">
-                                            <img src="@sponsor.SponsorImage.Image" alt="">
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        link = "";
-
-                                        <img src="../images/Image_Not_Available.jpg" alt="">
-                                    }
-                                    <p>&nbsp;</p>
-                                    <h3>@sponsor.SponsorLevel Level Sponsor</h3>
-                                    <p style="font-weight:bold;font-size:16pt">@sponsor.SponsorName</p>
-                                    <p>@sponsor.SponsorSecondLine</p>
-                                    <p style="font-size:12pt"><a href="@link" target="_blank" >Website</a></p>
-                                    <ul></ul>
-                                    <div class="alright"><!-- <a href="#" class="btn">Read More</a> --></div>
-                                </div>
-                            </div>
-                        </li>
+                        if (sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
+                        {
+                            link = "<a href=\"" + sponsor.SponsorImage.Link + "\" target=\"_blank\"><img src=\"" + sponsor.SponsorImage.Image + "\" alt=\"\"></a>";
+                            
+                        }
+                        else
+                        {
+                            link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\">";
+                        }
+                        TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
+                                                    "../images/red_wine.jpg",     // pictureLink2
+                                                    sponsor.SponsorLevel + " Level Sponsor",
+                                                    sponsor.SponsorName,
+                                                    link,
+                                                    "",
+                                                    sponsor.SponsorSecondLine,
+                                                    "<p style=\"font-size:12pt\"><a href=\"" + "\" target=\"_blank\" >Website</a></p>",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "");
+                        { Html.RenderPartial("ULsection", sec1); }
                     }
                 }
             </ul>
