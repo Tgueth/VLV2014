@@ -15,40 +15,43 @@
                         @{Table carving = Model["Carving Station"];}
                         @if (Model == null || Model.Count <= 0)
                         {
-                            <li data-srcpreview="../images/carving_station.jpg">
-                                <div>
-                                    <div class="content">
-                                        <img src="../images/red_wine.jpg" alt="">
-                                        <h3>List of foods is not yet available</h3>
-                                        <p>Please check back later.</p>
-                                    </div>
-                                </div>
-                            </li>
+                            TabSectionView sec1 = new TabSectionView("../images/carving_station.jpg",  // pictureLink1
+                                                        "../images/red_wine.jpg",     // pictureLink2
+                                                        "List of foods is not yet available",
+                                                        "",
+                                                        "Please check back later.",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "");
+                            {Html.RenderPartial("ULsection", sec1);}
                         }
                         else
                         {
                             foreach (RevenueItem food in carving)
                             {
-                                <li data-srcpreview="../images/carving_station.jpg">
-                                    <div>
-                                        <div class="content">
-                                            @if (food.PictureLink == null || food.PictureLink.Image == null)
-                                            {
-                                                <img src="../images/red_wine.jpg" alt="">
-                                            }
-                                            else
-                                            {
-                                                <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
-                                            }
-                                            <h3>@food.AssignedTable</h3>
-                                            <p style="font-weight:bold; font-size:16pt">@food.Name</p>
-                                            <ul>
-                                                <li><span>Description:</span> @food.Description</li>
-                                            </ul>
-                                            <div class="alright"></div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    string image = null;
+                                    if ( food.PictureLink == null || food.PictureLink.Image == null)
+                                    { image = "../images/red_wine.jpg"; }
+                                    else
+                                    { image = food.PictureLink.Image; }
+                                    TabSectionView sec1 = new TabSectionView("../images/carving_station.jpg",  // pictureLink1
+                                                            "../images/red_wine.jpg",     // pictureLink2
+                                                            food.AssignedTable,
+                                                            "",
+                                                            "",
+                                                            food.Name,
+                                                            "Description: " + food.Description,
+                                                            "",
+                                                            "",
+                                                            "",
+                                                            "",
+                                                            "");
+                                    
+                                {Html.RenderPartial("ULsection", sec1);}
                             }
                         }
                     </ul>
@@ -182,60 +185,6 @@
                         }
                     </ul>
                 </li>
-
-
-
-
-
-
-                <!-- Old Code that include foreach -->
-
-                 <!-- @foreach (Table foodTable in Model)
-                {
-                    <li data-setname="@foodTable.TableID">
-                        <ul>
-                            @if (Model == null || Model.Count <= 0)
-                            {
-                                <li data-srcpreview="../images/carving_station.jpg">
-                                    <div>
-                                        <div class="content">
-                                            <img src="../images/red_wine.jpg" alt="">
-                                            <h3>List of foods is not yet available</h3>
-                                            <p>Please check back later.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                            else
-                            {
-                                foreach (RevenueItem food in foodTable)
-                                {
-                                    <li data-srcpreview="../images/carving_station.jpg">
-                                        <div>
-                                            <div class="content">
-                                                @if (food.PictureLink == null || food.PictureLink.Image == null)
-                                                {
-                                                    <img src="../images/red_wine.jpg" alt="">
-                                                }
-                                                else
-                                                {
-                                                    <img src="@food.PictureLink.Image" alt="" height="@food.PictureLink.Height" width="@food.PictureLink.Width">
-                                                }
-                                                <h3>@food.AssignedTable</h3>
-                                                <p style="font-weight:bold; font-size:16pt">@food.Name</p>
-                                                <ul>
-                                                    <li><span>Description:</span> @food.Description</li>
-                                                </ul>
-                                                <div class="alright"></div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </li>
-                } 
-                    -->
 			</ul>
 		</div>
 

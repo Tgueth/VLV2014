@@ -1,4 +1,5 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@using VLV2014Test.Models
 @model BinaryStarTechnology.CharityEventRevenueMgmtClasses.RevenueItem
 
 <li data-srcpreview="../images/red1.jpg">
@@ -20,3 +21,18 @@
         </div>
     </div>
 </li>
+@{
+    TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
+                                Model.PictureLink.Image,     // pictureLink2
+                                Model.Item,
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "");
+}
+@{Html.RenderPartial("ULsection", sec1);}
