@@ -15,18 +15,7 @@
             <ul>
                 @if (Model == null || Model.Count <= 0)
                 {
-                    TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
-                                                "../images/red_wine.jpg",     // pictureLink2
-                                                "Sponsors",
-                                                "",
-                                                "To be updated.",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "");
+                    TabSectionView sec1 = new TabSectionView("../images/red1.jpg", "../images/red_wine.jpg", "Sponsors","","To be updated.","","","","","","","");
                     { Html.RenderPartial("ULsection", sec1); }
                 }
                 else

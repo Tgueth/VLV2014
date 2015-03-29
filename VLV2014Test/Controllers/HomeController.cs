@@ -105,7 +105,6 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Foods()
         {
-            RevenueItems foods = dataMgr.GetRevenueItemsByType(eventID, "Foods");
             Tables foodTables = dataMgr.GetTablesForAuctionSaleType(eventID, "Foods");
 
             if ( foodTables == null )
