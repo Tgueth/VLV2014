@@ -31,18 +31,7 @@
                         {
                             link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\">";
                         }
-                        TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
-                                                    "../images/red_wine.jpg",     // pictureLink2
-                                                    sponsor.SponsorLevel + " Level Sponsor",
-                                                    sponsor.SponsorName,
-                                                    link,
-                                                    "",
-                                                    sponsor.SponsorSecondLine,
-                                                    "<p style=\"font-size:12pt\"><a href=\"" + "\" target=\"_blank\" >Website</a></p>",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "");
+                        TabSectionView sec1 = new TabSectionView("../images/red1.jpg","../images/red_wine.jpg",sponsor.SponsorLevel + " Level Sponsor",sponsor.SponsorName,link,"",sponsor.SponsorSecondLine,"<p style=\"font-size:12pt\"><a href=\"" + "\" target=\"_blank\" >Website</a></p>","","","","");
                         { Html.RenderPartial("ULsection", sec1); }
                     }
                 }
@@ -69,7 +58,7 @@
 
 @section Scripts
 {
-    <script>
+        <script>
         $(window).load(function () {
             $('#TMGPrototype2').TMGPrototype2({});
         });

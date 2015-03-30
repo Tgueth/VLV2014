@@ -4,7 +4,7 @@
     var getObject = {
         destination: $('body')
     ,   controls: true
-    ,   autoPlay: false
+    ,   autoPlay: true
     }
     $.extend(getObject, o); 
     
@@ -145,37 +145,33 @@
                 }
             }
         )
-        $('._nextButton', _controlsHolder).click(
-            function(){
-                if(!isPreviewLoading && !isPreviewAnimate){
 
-                    if(currImg < previewSrcArray[currSet].length-1){
-                        currImg++;
-                    }else{
-                        currImg = 0;
-                    }
-
-                    urlPreview = previewSrcArray[currSet][currImg];
-                    _changePreview(urlPreview, 300);
-
-                    _changeDescr(currImg, 600);
-                }
-            }
-        )
+        $('._nextButton', _controlsHolder).click(nextButton)
     }
-    //-------------------- auto switch ----------------------//
+
+    function nextButton() {
+        if (!isPreviewLoading && !isPreviewAnimate) {
+
+            if (currImg < previewSrcArray[currSet].length - 1) {
+                currImg++;
+            }
+            else {
+                currImg = 0;
+            }
+
+            urlPreview = previewSrcArray[currSet][currImg];
+            _changePreview(urlPreview, 300);
+
+            _changeDescr(currImg, 600);
+        }
+    }
+
+        //-------------------- auto switch ----------------------//
     function autoSwitch(_duration){
         autoSwitchObj = setInterval(
             function(){
      
-                if(currImg < $('>li', _thumbnailList).length-1){
-                    currImg++;
-                }else{
-                    currImg = 0;
-                }
-
-                urlPreview = previewSrcArray[currSet][currImg];
-                _changePreview(urlPreview, 300);
+                nextButton();
             }
             , _duration
         )
