@@ -166,17 +166,26 @@
         }
     }
 
-        //-------------------- auto switch ----------------------//
+    //-------------------- auto switch ----------------------//
     function autoSwitch(_duration){
         autoSwitchObj = setInterval(
             function(){
+                if (currImg < previewSrcArray[currSet].length - 1) {
+                    nextButton();
+                }
+                else {
+                    currImg = -1;
+                    var cntOfSets = $("#categoryList").children().length;
+                    var currIndex = (currSet + 1) % cntOfSets;
+                    setSwitcher(currIndex);
+                    nextButton()
+                }
      
-                nextButton();
+
             }
             , _duration
         )
     }
-
     //-------------------------------------------------------//
  
     //------------------- setSwitcher -------------------//
