@@ -22,7 +22,8 @@
     ,   isPreviewAnimate = false
     ,   tmpValue
     ,   leftWW
-    ,   autoSwitchObj
+    , autoSwitchObj
+    ,   direction = 1
     ;
 
     var 
@@ -130,19 +131,8 @@
 
         $('._prevButton', _controlsHolder).click(
             function(){
-                if(!isPreviewLoading && !isPreviewAnimate){
-
-                    if(currImg > 0){
-                        currImg--;
-                    }else{
-                        currImg = previewSrcArray[currSet].length-1;
-                    }
-    
-                    urlPreview = previewSrcArray[currSet][currImg];
-                    _changePreview(urlPreview, 1000);
-
-                    _changeDescr(currImg, 600);
-                }
+                direction = -1;
+                nextButton();
             }
         )
 
@@ -152,11 +142,24 @@
     function nextButton() {
         if (!isPreviewLoading && !isPreviewAnimate) {
 
-            if (currImg < previewSrcArray[currSet].length - 1) {
-                currImg++;
+            if (direction > 0)
+            {
+                if (currImg < previewSrcArray[currSet].length - 1)
+                {
+                    currImg += direction;
+                }
+                else
+                {
+                    currImg = 0;
+                }
             }
-            else {
-                currImg = 0;
+            else // <0, going backwards
+            {
+                currImg += direction;
+                if (currImg < 0)
+                {
+                    currImg = previewSrcArray[currSet].length - 1;
+                }
             }
 
             urlPreview = previewSrcArray[currSet][currImg];
@@ -170,18 +173,34 @@
     function autoSwitch(_duration){
         autoSwitchObj = setInterval(
             function(){
-                if (currImg < previewSrcArray[currSet].length - 1) {
-                    nextButton();
+                if (direction > 0)
+                {
+                    if (currImg >= previewSrcArray[currSet].length - 1)
+                    {
+                        currImg = -1;
+                        var cntOfSets = $("#categoryList").children().length;
+                        var currIndex = (currSet + direction) % cntOfSets;
+                        setSwitcher(currIndex);
+                    }
                 }
-                else {
-                    currImg = -1;
-                    var cntOfSets = $("#categoryList").children().length;
-                    var currIndex = (currSet + 1) % cntOfSets;
-                    setSwitcher(currIndex);
-                    nextButton()
+                else  // waling backwards
+                {
+                    if (currImg <= 0)
+                    {
+                        currImg = previewSrcArray[currSet].length;
+                        var cntOfSets = $("#categoryList").children().length;
+                        var currIndex = (currSet + direction) % cntOfSets;
+                        if (currIndex < 0)
+                        {
+                            currIndex = cntOfSets - 1;
+                        }
+
+                        setSwitcher(currIndex);
+                    }
+
                 }
      
-
+                nextButton();
             }
             , _duration
         )
