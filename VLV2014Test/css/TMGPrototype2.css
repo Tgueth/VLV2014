@@ -104,6 +104,20 @@
 	-webkit-transition: 0.5s ease;
 }
 
+#TMGPrototype2 #controlHolder > ._StopButton{
+    margin-top: 10px;
+	width: 53px;
+	height: 50px;
+	background: url(../images/Stopprev.png) -5px -1px no-repeat #edecec;
+	float: left;
+	margin-left: 50px;
+	cursor: pointer;
+	border: 1px solid #ac2135;
+	transition: 0.5s ease;
+	-o-transition: 0.5s ease;
+	-webkit-transition: 0.5s ease;
+}
+
 #TMGPrototype2 #controlHolder > ._prevButton:hover, #TMGPrototype2 #controlHolder > ._nextButton:hover {
 	background-color: #ac2135 !important;
 } 

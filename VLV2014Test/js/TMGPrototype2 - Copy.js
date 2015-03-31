@@ -22,7 +22,7 @@
     ,   isPreviewAnimate = false
     ,   tmpValue
     ,   leftWW
-    , autoSwitchObj
+    ,   autoSwitchObj
     ,   direction = 1
     ;
 
@@ -75,7 +75,7 @@
         _bottomImg.css({position:'absolute', 'z-index':1});
 
         //  control build
-        _this.append("<div id='controlHolder'><div class='_prevButton'></div><div class='_nextButton'></div></div>");
+        _this.append("<div id='controlHolder'><div class='_prevButton'></div><div class='_nextButton'></div><div class='_StopButton'></div></div>");
         _controlsHolder = $('#controlHolder');
 
         if(getObject.controls){
@@ -132,45 +132,44 @@
         $('._prevButton', _controlsHolder).click(
             function(){
                 direction = -1;
-                clearInterval(autoSwitchObj);
-                autoSwitch = false;
-                if (!isPreviewLoading && !isPreviewAnimate) {
-
-                    if (currImg > 0) {
-                        currImg--;
-                    } else {
-                        currImg = previewSrcArray[currSet].length -1;
-                    }
-
-                    urlPreview = previewSrcArray[currSet][currImg];
-                    _changePreview(urlPreview, 1000);
-
-                    _changeDescr(currImg, 600);
-                }
+                nextButton();
             }
         )
 
         $('._nextButton', _controlsHolder).click(
-                function()
-                {
-                    direction = 1;
-                    nextButton();
-                }
-            )
+            function()
+            {
+                direction = 1;
+                nextButton();
+            }
+        )
+
+        $('._StopButton', _controlsHolder).click(
+            function()
+            {
+                if (autoSwitchObj != 0)
+                { clearInterval(autoSwitchObj); }
+                autoSwitchObj = 0;
+            }
+        )
     }
 
     function nextButton() {
         if (!isPreviewLoading && !isPreviewAnimate) {
 
+            currImg += direction;
             if (direction > 0)
             {
-                if (currImg < previewSrcArray[currSet].length - 1)
-                {
-                    currImg += direction;
-                }
-                else
+                if (currImg >= previewSrcArray[currSet].length)
                 {
                     currImg = 0;
+                }
+            }
+            else // <0, going backwards
+            {
+                if (currImg < 0)
+                {
+                    currImg = previewSrcArray[currSet].length - 1;
                 }
             }
 
@@ -187,6 +186,7 @@
             function(){
                 if (direction > 0)
                 {
+                    var itemsCnt = previewSrcArray[currSet].length;
                     if (currImg >= previewSrcArray[currSet].length - 1)
                     {
                         currImg = -1;
