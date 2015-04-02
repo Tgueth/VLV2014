@@ -1,0 +1,24 @@
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@using VLV2014Test.Models
+@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.SponsorGroups
+
+<div id="sponsors" class="scroll-img">
+    <ul >
+        @{
+            string image = null;
+            foreach(Sponsors sponsors in Model)
+            {
+                foreach(Sponsor sponsor in sponsors)
+                {
+                    if ( sponsor.SponsorImage == null)
+                    { image = "../images/Image_Not_Available.jpg"; }
+                    else
+                    { image = sponsor.SponsorImage.Image; }
+                    <li>
+                        <img src="@image" />
+                    </li>
+                }
+            }
+        }
+    </ul>
+</div>

@@ -212,6 +212,7 @@
     <Content Include="css\ie.css" />
     <Content Include="css\jquery-ui-1.10.3.custom.css" />
     <Content Include="css\reset.css" />
+    <Content Include="css\scrollbox.css" />
     <Content Include="css\style.css" />
     <Content Include="css\superfish.css" />
     <Content Include="css\TMGPrototype2.css" />
@@ -355,6 +356,7 @@
     <Content Include="js\jquery.easing.1.3.js" />
     <Content Include="js\jquery.equalheights.js" />
     <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.scrollbox.js" />
     <Content Include="js\jquery.ui.touch-punch.js" />
     <Content Include="js\PIE.htc" />
     <Content Include="js\PIE.php" />
@@ -365,22 +367,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="ScriptsX\jquery-2.1.3.intellisense.js" />
-    <Content Include="ScriptsX\bootstrap.js" />
-    <Content Include="ScriptsX\bootstrap.min.js" />
-    <Content Include="ScriptsX\jquery-2.1.3.js" />
-    <Content Include="ScriptsX\jquery-2.1.3.min.js" />
-    <None Include="ScriptsX\jquery.validate-vsdoc.js" />
-    <Content Include="ScriptsX\jquery.validate.js" />
-    <Content Include="ScriptsX\jquery.validate.min.js" />
-    <Content Include="ScriptsX\jquery.validate.unobtrusive.js" />
-    <Content Include="ScriptsX\jquery.validate.unobtrusive.min.js" />
-    <Content Include="ScriptsX\modernizr-2.8.3.js" />
-    <Content Include="ScriptsX\npm.js" />
-    <Content Include="ScriptsX\respond.js" />
-    <Content Include="ScriptsX\respond.matchmedia.addListener.js" />
-    <Content Include="ScriptsX\respond.matchmedia.addListener.min.js" />
-    <Content Include="ScriptsX\respond.min.js" />
     <Content Include="Views\Home\AuctionItems.cshtml" />
     <Content Include="Views\Home\EventSchedule.cshtml" />
     <Content Include="Downloads\Viva La Vino 2014 Sponsorship and Donation form.pdf" />
@@ -425,9 +411,9 @@
     <Content Include="Views\Home\BidderSignup.cshtml" />
     <Content Include="Views\Account\Registered.cshtml" />
     <Content Include="Views\Home\PurchaseTicketNS.cshtml" />
-    <Content Include="ScriptsX\jquery-2.1.3.min.map" />
     <Content Include="Views\Shared\MenuLine.cshtml" />
     <Content Include="Views\Shared\ULsection.cshtml" />
+    <Content Include="Views\Shared\ScrollingSponsors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

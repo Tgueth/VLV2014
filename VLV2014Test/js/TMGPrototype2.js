@@ -4,7 +4,7 @@
     var getObject = {
         destination: $('body')
     ,   controls: true
-    ,   autoPlay: true
+    ,   autoPlay: false
     }
     $.extend(getObject, o); 
     
@@ -22,7 +22,8 @@
     ,   isPreviewAnimate = false
     ,   tmpValue
     ,   leftWW
-    , autoSwitchObj
+    ,   autoPlay
+    ,   autoSwitchObj
     ,   direction = 1
     ;
 
@@ -107,8 +108,21 @@
 
         addEventsFunction();
 
-        if(getObject.autoPlay){
-            autoSwitch(5000);
+        if (!(typeof AutoPlay === 'undefined'))
+        {
+            autoPlay = AutoPlay;
+        }
+        else
+        {
+            autoPlay = getObject.autoPlay;
+        }
+        var interval = 5000;
+        if (!(typeof AutoPlayInterval === 'undefined'))
+        {
+            interval = AutoPlayInterval;
+        }
+        if (autoPlay) {
+            autoSwitch(interval);
         }      
 
 	}//end init  
@@ -189,7 +203,7 @@
                 {
                     if (currImg >= previewSrcArray[currSet].length - 1)
                     {
-                        currImg = -1;
+                        currImg = 0;
                         var cntOfSets = $("#categoryList").children().length;
                         var currIndex = (currSet + direction) % cntOfSets;
                         setSwitcher(currIndex);

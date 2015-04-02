@@ -1,82 +1,39 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
-@model Event
+@model IndexView
 @{
-    string a = Model.EventLogo.Image;
+    string a = Model.EventID.EventLogo.Image;
     MenuItems menuItems = VLV2014Test.Controllers.HomeController.menuItems;
 }
 <div id="TMGPrototype2">
     <div class="ic">
         <h1>
-            <p><a href="@Model.EventLogo.Link"><img src="@Model.EventLogo.Image" alt="@Model.EventName"/></a></p>
+            <p><a href="@Model.EventID.EventLogo.Link"><img src="@Model.EventID.EventLogo.Image" alt="@Model.EventID.EventName"/></a></p>
         </h1>
     </div>
     <ul class='sets'>
-        <li data-setname="@Model.EventName">
+        <li data-setname="@Model.EventID.EventName">
             <ul>
                 @{ 
-                    string href = "<a href=\"" + Model.MapLink + "\" target=\"_blank\">" + Model.EventLocation + " (Click here for map)</a>";
-                    TabSectionView sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg", "../images/Happy faces of Viva La Vino.JPG", "Wine Tasting Fund Raiser", "", "","", Model.EventDate.ToString("MMM dd, yyyy"), "6:30 PM - 10:30 PM", "", href, "A Fun Evening of Great Wine, Good Food and Fantastic People!", "");
+                    string href = "<a href=\"" + Model.EventID.MapLink + "\" target=\"_blank\">" + Model.EventID.EventLocation + " (Click here for map)</a>";
+                    TabSectionView sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg", "../images/Happy faces of Viva La Vino.JPG", "Wine Tasting Fund Raiser", "", "", "", Model.EventID.EventDate.ToString("MMM dd, yyyy"), "6:30 PM - 10:30 PM", "", href, "A Fun Evening of Great Wine, Good Food and Fantastic People!", "");
                  }
                 @{Html.RenderPartial("ULsection", sec1);}
                 @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg",  // pictureLink1
-                                                "../images/Foods and Wine.png",     // pictureLink2
-                                                "",
-                                                "", 
-                                                "",
-                                                "",
-                                                "------",
-                                                "Food! Enjoy fabulous cuisine from Jim Kokas’s legendary Opus One restaurant, now a catering company.", // header
-                                                "",
-                                                "",
-                                                "",
-                                                "");
+                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Foods and Wine.png","","","","","------","Food! Enjoy fabulous cuisine from Jim Kokas’s legendary Opus One restaurant, now a catering company.","","","","");
                 }
                 @{Html.RenderPartial("ULsection", sec1);}
                 @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg",  // pictureLink1
-                                                "../images/Fun People at Viva La Vino Troy.jpg",     // pictureLink2
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "------",
-                                                "Fun! Mingle with hundreds of community leaders, business professionals, and even a few local celebrities.", // header
-                                                "",
-                                                "",
-                                                "",
-                                                "");
+                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Fun People at Viva La Vino Troy.jpg","","","","","------","Fun! Mingle with hundreds of community leaders, business professionals, and even a few local celebrities.","","","","");
                 }
                 @{Html.RenderPartial("ULsection", sec1);}
                 @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg",  // pictureLink1
-                                                "../images/rotary emblem.GIF",     // pictureLink2
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "------",
-                                                "Fundraising! Help us raise money for Troy Rotary’s local charitable causes, including The Boys & Girls Club, Hope Warming Center, and the Homeless Vets.", // header
-                                                "",
-                                                "",
-                                                "",
-                                                "");
+                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/rotary emblem.GIF","","","","","------","Fundraising! Help us raise money for Troy Rotary’s local charitable causes, including The Boys & Girls Club, Hope Warming Center, and the Homeless Vets.","","","","");
                 }
                 @{Html.RenderPartial("ULsection", sec1);}
                 @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg",  // pictureLink1
-                                                "../images/Networking for Good at Troy Rotary.jpg",     // pictureLink2
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "------",
-                                                "Join Troy Rotary for lunch! We meet at Noon every Wednesday at Bank of America, 2600 W. Big Beaver Rd. (next to Somerset North) in Troy.  Enjoy a great speaker and make new friends.  Lunch is only $13.", // header
-                                                "",
-                                                "",
-                                                "",
-                                                "");
+                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Networking for Good at Troy Rotary.jpg","","","","","------",
+                                                "Join Troy Rotary for lunch! We meet at Noon every Wednesday at Bank of America, 2600 W. Big Beaver Rd. (next to Somerset North) in Troy.  Enjoy a great speaker and make new friends.  Lunch is only $13.","","","","");
                 }
                 @{Html.RenderPartial("ULsection", sec1);}
             </ul>
@@ -95,9 +52,22 @@
      </ul>
 </div>
 
+@section Variables
+{
+    <script>
+        var AutoPlayInterval = 4000;
+        var AutoPlay = true;
+    </script>
+}
+
 @section TopTabs
 {
     @{Html.RenderPartial("MenuLine", menuItems);}
+}
+
+@section ScrolllingSponsors
+{
+    @{Html.RenderPartial("ScrollingSponsors",Model.AllSponsors);}
 }
 
 @section Scripts
@@ -105,6 +75,12 @@
 <script>
     $(window).load(function () {
         $('#TMGPrototype2').TMGPrototype2({});
+        $('sponsors').scrollbox(
+            {
+                direction: 'h',
+                distance: 150
+            }
+            );
     });
 </script>
 }

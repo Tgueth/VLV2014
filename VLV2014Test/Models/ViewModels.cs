@@ -7,16 +7,10 @@ using BinaryStarTechnology.CharityEventRevenueMgmtClasses;
 
 namespace VLV2014Test.Models
 {
-    public class SponsorsView
+    public class IndexView
     {
-        public Sponsors Presenting { get; set; }
-        public Sponsors Platinum { get; set; }
-        public Sponsors Elite { get; set; }
-        public Sponsors Gold { get; set; }
-        public Sponsors Silver { get; set; }
-        public Sponsors Rotarians { get; set; }
-        public Sponsor Valet { get; set; }
-        public Sponsor Music { get; set; } 
+        public IEvent EventID { get; set; }
+        public SponsorGroups AllSponsors { get; set; }
     }
 
     public class TabSectionView

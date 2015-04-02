@@ -15,6 +15,7 @@ namespace VLV2014Test.Controllers
         private IDataManager dataMgr = null;
         private IEvent eventID;
         public static MenuItems menuItems = null;
+        public static SponsorGroups sponsorGroups = null;
 
         public HomeController(IDataManager dataMgr, IEvent eventID, MenuItems items)
         {
@@ -25,7 +26,11 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Index()
         {
-            return View(eventID);
+            sponsorGroups = dataMgr.GetAllSponsorsByLevel(eventID);
+            IndexView indexView = new IndexView();
+            indexView.EventID = eventID;
+            indexView.AllSponsors = sponsorGroups;
+            return View(indexView);
         }
 
         public ActionResult About()
