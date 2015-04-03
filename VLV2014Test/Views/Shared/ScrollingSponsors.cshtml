@@ -6,16 +6,35 @@
     <ul >
         @{
             string image = null;
+            int hsize = 50;
+            int wsize = 50;
+            double ratio = 1;
+            
             foreach(Sponsors sponsors in Model)
             {
                 foreach(Sponsor sponsor in sponsors)
                 {
-                    if ( sponsor.SponsorImage == null)
-                    { image = "../images/Image_Not_Available.jpg"; }
+                    if ( sponsor.SponsorImage == null || sponsor.SponsorImage.Height == 0)
+                    { 
+                        image = "../images/Image_Not_Available.jpg";
+                        hsize = 50;
+                        wsize = 50;
+                        continue;
+                    }
                     else
-                    { image = sponsor.SponsorImage.Image; }
+                    { 
+                        image = sponsor.SponsorImage.Image;
+                        hsize = sponsor.SponsorImage.Height;
+                        wsize = sponsor.SponsorImage.Width;
+                        if ( hsize > 100)
+                        {
+                            ratio = 100.0 / hsize;
+                            hsize *= (int) ratio * hsize;
+                            wsize = (int) ratio * wsize;
+                        }
+                    }
                     <li>
-                        <img src="@image" />
+                        "<a href="@sponsor.SponsorImage.Link" target="_blank"><img src="@image" height="=@hsize" width="@wsize" alt="" /></a>"
                     </li>
                 }
             }

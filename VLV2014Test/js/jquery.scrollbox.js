@@ -87,6 +87,8 @@ $.fn.scrollbox = function(config) {
       }
       container[0][config.scrollOffset] = newScrollOffset;
 
+      newScrollOffset = scrollDistance;
+
       if (newScrollOffset >= scrollDistance) {
         for (i = 0; i < config.switchItems; i++) {
           if (config.queue && config.queue.find(config.listItemElement).length > 0) {
