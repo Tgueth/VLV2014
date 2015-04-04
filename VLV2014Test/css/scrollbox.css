@@ -8,7 +8,7 @@
 
 .scroll-text ul {
   width: 800px;
-  height: 100px;
+  height: 80px;
   overflow: hidden;
   margin: 0;
 }
@@ -17,16 +17,16 @@
   height: 1.5em;
 }
 .scroll-img {
-border: 1px solid red;
+border: none;
   width: 780px; /* width of scrollbox */
-  height: 100px;    /* height of scrollbox */
+  height: 80px;    /* height of scrollbox */
   overflow: hidden;
   font-size: 0;
 }
 
 .scroll-img ul {
   width: 750px;
-  height: 100px;
+  height: 80px;
 margin: 0;
 }
 .scroll-img ul li {

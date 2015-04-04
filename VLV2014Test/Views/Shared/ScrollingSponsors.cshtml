@@ -26,15 +26,15 @@
                         image = sponsor.SponsorImage.Image;
                         hsize = sponsor.SponsorImage.Height;
                         wsize = sponsor.SponsorImage.Width;
-                        if ( hsize > 100)
+                        if ( hsize > 80)
                         {
-                            ratio = 100.0 / hsize;
+                            ratio = 80.0 / hsize;
                             hsize *= (int) ratio * hsize;
                             wsize = (int) ratio * wsize;
                         }
                     }
                     <li>
-                        "<a href="@sponsor.SponsorImage.Link" target="_blank"><img src="@image" height="=@hsize" width="@wsize" alt="" /></a>"
+                        "<a href="@sponsor.SponsorImage.Link" target="_blank"><img src="@image" height="@hsize" width="@wsize" alt="" /></a>"
                     </li>
                 }
             }
