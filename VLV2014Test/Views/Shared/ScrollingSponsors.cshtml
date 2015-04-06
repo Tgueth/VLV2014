@@ -2,6 +2,8 @@
 @using VLV2014Test.Models
 @model BinaryStarTechnology.CharityEventRevenueMgmtClasses.SponsorGroups
 
+@if ( Model.Count > 0)
+{ 
 <div id="sponsors" class="scroll-img">
     <ul >
         @{
@@ -29,8 +31,8 @@
                         if ( hsize > 80)
                         {
                             ratio = 80.0 / hsize;
-                            hsize *= (int) ratio * hsize;
-                            wsize = (int) ratio * wsize;
+                            hsize = (int) (ratio * hsize);
+                            wsize = (int) (ratio * wsize);
                         }
                     }
                     <li>
@@ -41,3 +43,4 @@
         }
     </ul>
 </div>
+}

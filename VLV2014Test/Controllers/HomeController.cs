@@ -22,14 +22,15 @@ namespace VLV2014Test.Controllers
             this.dataMgr = dataMgr;
             this.eventID = eventID;
             menuItems = items;
+            sponsorGroups = dataMgr.GetAllSponsorsByLevel(eventID);
         }
 
         public ActionResult Index()
         {
-            sponsorGroups = dataMgr.GetAllSponsorsByLevel(eventID);
             IndexView indexView = new IndexView();
             indexView.EventID = eventID;
             indexView.AllSponsors = sponsorGroups;
+            indexView.WebItems = dataMgr.GetWebPageItems(eventID, "Index", eventID.EventName);
             return View(indexView);
         }
 
@@ -122,7 +123,12 @@ namespace VLV2014Test.Controllers
                 foodTables.EventID = this.eventID;
             }
 
-            return View(foodTables);
+            FoodsView view = new FoodsView();
+            view.EventID = eventID;
+            view.FoodsToShow = foodTables;
+            view.AllSponsors = sponsorGroups;
+
+            return View(view);
         }
 
         public ActionResult BidderSignup()

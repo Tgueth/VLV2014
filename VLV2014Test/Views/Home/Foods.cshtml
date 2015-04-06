@@ -1,6 +1,6 @@
-﻿@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.Tables
-@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
+@model FoodsView
 
 @{
     ViewBag.Title = "Foods";
@@ -10,7 +10,7 @@
 		<div id="TMGPrototype2"><div class="ic"></div>
 			<h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventID.EventName"></a></h1>
 			<ul class='sets'>
-    @foreach (Table foodTable in Model)
+    @foreach (Table foodTable in Model.FoodsToShow)
     {
         <li data-setname="@foodTable.TableID">
             <ul>
@@ -39,6 +39,11 @@
 			</ul>
 		</div>
 
+@section ScrolllingSponsors
+{
+    @{Html.RenderPartial("ScrollingSponsors", Model.AllSponsors);}
+}
+
 @section Variables
 {
     <script>
@@ -57,6 +62,16 @@
     <script>
         $(window).load(function () {
             $('#TMGPrototype2').TMGPrototype2({});
+            if ($('#sponsors').length) {
+                $('#sponsors').scrollbox(
+                    {
+                        direction: 'h',
+                        distance: 50,
+                        switchItems: 1
+                        @(Model.AllSponsors.LogoCount() <= 1 ? ",autoPlay: false" : "")
+                    }
+                );
+            }
         });
     </script>
 }

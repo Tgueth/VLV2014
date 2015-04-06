@@ -14,28 +14,10 @@
     <ul class='sets'>
         <li data-setname="@Model.EventID.EventName">
             <ul>
-                @{ 
-                    string href = "<a href=\"" + Model.EventID.MapLink + "\" target=\"_blank\">" + Model.EventID.EventLocation + " (Click here for map)</a>";
-                    TabSectionView sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg", "../images/Happy faces of Viva La Vino.JPG", "Wine Tasting Fund Raiser", "", "", "", Model.EventID.EventDate.ToString("MMM dd, yyyy"), "6:30 PM - 10:30 PM", "", href, "A Fun Evening of Great Wine, Good Food and Fantastic People!", "");
-                 }
-                @{Html.RenderPartial("ULsection", sec1);}
-                @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Foods and Wine.png","","","","","------","Food! Enjoy fabulous cuisine from Jim Kokas’s legendary Opus One restaurant, now a catering company.","","","","");
+                @foreach (WebPageItem item in Model.WebItems)
+                {
+                    { Html.RenderPartial("ULsection", item); }
                 }
-                @{Html.RenderPartial("ULsection", sec1);}
-                @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Fun People at Viva La Vino Troy.jpg","","","","","------","Fun! Mingle with hundreds of community leaders, business professionals, and even a few local celebrities.","","","","");
-                }
-                @{Html.RenderPartial("ULsection", sec1);}
-                @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/rotary emblem.GIF","","","","","------","Fundraising! Help us raise money for Troy Rotary’s local charitable causes, including The Boys & Girls Club, Hope Warming Center, and the Homeless Vets.","","","","");
-                }
-                @{Html.RenderPartial("ULsection", sec1);}
-                @{
-                    sec1 = new TabSectionView("../images/dreamstime_s_1890011.jpg","../images/Networking for Good at Troy Rotary.jpg","","","","","------",
-                                                "Join Troy Rotary for lunch! We meet at Noon every Wednesday at Bank of America, 2600 W. Big Beaver Rd. (next to Somerset North) in Troy.  Enjoy a great speaker and make new friends.  Lunch is only $13.","","","","");
-                }
-                @{Html.RenderPartial("ULsection", sec1);}
             </ul>
         </li>
         <li data-setname="Ticket(s)" >
@@ -75,13 +57,16 @@
 <script>
     $(window).load(function () {
         $('#TMGPrototype2').TMGPrototype2({});
-        $('#sponsors').scrollbox(
-            {
-                direction: 'h',
-                distance: 6,
-                switchItems: 1
-            }
-         );
+        if ($('#sponsors').length) {
+            $('#sponsors').scrollbox(
+                {
+                    direction: 'h',
+                    distance: 50,
+                    switchItems: 1
+                    @(Model.AllSponsors.LogoCount() <= 1 ? ",autoPlay: false" : "")
+                }
+            );
+        }
     });
 </script>
 }

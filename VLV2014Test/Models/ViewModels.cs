@@ -11,6 +11,14 @@ namespace VLV2014Test.Models
     {
         public IEvent EventID { get; set; }
         public SponsorGroups AllSponsors { get; set; }
+        public WebPageItems WebItems { get; set; }
+    }
+
+    public class FoodsView
+    {
+        public IEvent EventID { get; set; }
+        public SponsorGroups AllSponsors { get; set; }
+        public Tables FoodsToShow { get; set; }
     }
 
     public class TabSectionView

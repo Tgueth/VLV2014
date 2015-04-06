@@ -1,12 +1,13 @@
 ﻿@using VLV2014Test.Models
-@model VLV2014Test.Models.TabSectionView
-<li data-srcpreview="@Model.pictureLink1">
+@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
+@model WebPageItem
+<li data-srcpreview="@Model.pictureLink1.Image">
     <div>
         <div class="content">
-            <img src="@Model.pictureLink2" alt="">
+            <img src="@Model.pictureLink2.Image" alt="">
             <h3>@Model.header</h3>
-            <p>@Html.Raw( Model.hLine1)</p>
-            <p>@Html.Raw( Model.hLine2)</p>
+            <p>@Html.Raw(Model.hLine1)</p>
+            <p>@Html.Raw(Model.hLine2)</p>
             <ul>
                 <li><span>@Html.Raw(Model.lLine1)</span></li>
                 <li><span>@Html.Raw(Model.lLine2)</span></li>
