@@ -112,6 +112,10 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Foods()
         {
+            WebPageItemsGroup foodGroups = new WebPageItemsGroup();
+            WebPageItems foodsOnTable = null;
+            WebPageItem foodToShow = null;
+            ImageLink background = dataMgr.GetImageLink(151);
             Tables foodTables = dataMgr.GetTablesForAuctionSaleType(eventID, "Foods");
 
             if ( foodTables == null )
@@ -124,9 +128,33 @@ namespace VLV2014Test.Controllers
                 foodTables.EventID = this.eventID;
             }
 
+            if ( foodTables != null && foodTables.Count > 0)
+            {
+                foreach (Table table in foodTables)
+                {
+                    foodsOnTable = new WebPageItems();
+                    foreach (RevenueItem food in table)
+                    {
+                        string desc = "Description: " + food.Description;
+                        foodToShow = new WebPageItem();
+                        foodToShow = new WebPageItem(dataMgr, eventID, food.AssignedTable, background, food.PictureLink, "", food.AssignedTable, "", food.Name, desc, "", "", "", "", "");
+                        foodsOnTable.Add(foodToShow);
+                    }
+
+                    if (foodsOnTable.Count > 0) foodGroups.Add(foodsOnTable);
+                }
+            }
+            else
+            {
+                foodsOnTable = new WebPageItems();
+                foodToShow = new WebPageItem(dataMgr, eventID, "Food", 150, 152, "List of foods is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
+                foodsOnTable.Add(foodToShow);
+                foodGroups.Add(foodsOnTable);
+            }
+
             FoodsView view = new FoodsView();
             view.EventID = eventID;
-            view.FoodsToShow = foodTables;
+            view.FoodsToShow = foodGroups;
             view.AllSponsors = sponsorGroups;
 
             return View(view);

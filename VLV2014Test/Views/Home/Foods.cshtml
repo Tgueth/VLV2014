@@ -10,32 +10,18 @@
 		<div id="TMGPrototype2"><div class="ic"></div>
 			<h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventID.EventName"></a></h1>
 			<ul class='sets'>
-    @foreach (Table foodTable in Model.FoodsToShow)
-    {
-        <li data-setname="@foodTable.TableID">
-            <ul>
-                @if (foodTable == null || foodTable.Count <= 0)
+                @foreach (WebPageItems foodTable in Model.FoodsToShow)
                 {
-                    TabSectionView sec1 = new TabSectionView("../images/foodTable_station.jpg", "../images/red_wine.jpg", "List of foods is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
-                    { Html.RenderPartial("ULsection", sec1); }
+                    <li data-setname="@foodTable.SectionName()">
+                        <ul>
+                        @foreach (WebPageItem food in foodTable)
+                            {
+                                { Html.RenderPartial("ULsection", food); }
+                            }
+                        }
+                        </ul>
+                    </li>
                 }
-                else
-                {
-                    foreach (RevenueItem food in foodTable)
-                    {
-                        string image = null;
-                        if (food.PictureLink == null || food.PictureLink.Image == null)
-                        { image = "../images/red_wine.jpg"; }
-                        else
-                        { image = food.PictureLink.Image; }
-                        TabSectionView sec1 = new TabSectionView("../images/carving_station.jpg", food.PictureLink.Image, "", food.AssignedTable, "", food.Name, "Description: " + food.Description, "", "", "", "", "");
-
-                        { Html.RenderPartial("ULsection", sec1); }
-                    }
-                }
-            </ul>
-        </li>
-    }
 			</ul>
 		</div>
 
