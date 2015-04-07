@@ -14,11 +14,11 @@
                 {
                     <li data-setname="@foodTable.SectionName()">
                         <ul>
-                        @foreach (WebPageItem food in foodTable)
-                            {
-                                { Html.RenderPartial("ULsection", food); }
+                            @foreach (WebPageItem food in foodTable)
+                                {
+                                    { Html.RenderPartial("ULsection", food); }
+                                }
                             }
-                        }
                         </ul>
                     </li>
                 }

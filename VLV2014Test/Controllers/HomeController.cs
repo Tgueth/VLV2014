@@ -51,6 +51,11 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Wines()
         {
+            ImageLink redWineBackground = dataMgr.GetImageLink(153);
+            ImageLink whiteWineBackground = dataMgr.GetImageLink(155);
+            ImageLink dessertWineBackground = dataMgr.GetImageLink(156);
+            ImageLink noImage = dataMgr.GetImageLink(154);
+
             WineList red = dataMgr.GetWinesByClass(eventID, "Red Wine");
             WineList white = dataMgr.GetWinesByClass(eventID, "White Wine");
             WineList dessert = dataMgr.GetWinesByClass(eventID, "Dessert Wine");
@@ -60,7 +65,57 @@ namespace VLV2014Test.Controllers
             wineGroups.Add(white);
             wineGroups.Add(dessert);
 
-            return View(wineGroups);
+            WebPageItemsGroup wineWebGroups = new WebPageItemsGroup();
+            WebPageItems redWines = new WebPageItems();
+            if (red == null || red.Count <= 0)
+            {
+                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Red Wine", redWineBackground, dataMgr.GetImageLink(152), "List of red wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
+                redWines.Add(wineItem);
+            }
+            else
+            {
+                foreach (Wine wine in red)
+                {
+                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Red Wine", redWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
+                    redWines.Add(wineItem);
+                }
+            }
+            wineWebGroups.Add(redWines);
+
+            WebPageItems whiteWines = new WebPageItems();
+            if (white == null || white.Count <= 0)
+            {
+                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "White Wine", whiteWineBackground, dataMgr.GetImageLink(152), "List of white wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
+                whiteWines.Add(wineItem);
+            }
+            else
+            {
+                foreach (Wine wine in white)
+                {
+                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "White Wine", whiteWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
+                    whiteWines.Add(wineItem);
+                }
+            }
+            wineWebGroups.Add(whiteWines);
+
+            WebPageItems dessertWines = new WebPageItems();
+            if (dessert == null || dessert.Count <= 0)
+            {
+                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Dessert Wine", whiteWineBackground, dataMgr.GetImageLink(152), "List of Dessert wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
+                dessertWines.Add(wineItem);
+            }
+            else
+            {
+                foreach (Wine wine in dessert)
+                {
+                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Dessert Wine", whiteWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
+                    dessertWines.Add(wineItem);
+                }
+            }
+            wineWebGroups.Add(dessertWines);
+
+
+            return View(wineWebGroups);
         }
 
         public ActionResult PurchaseTicket()
@@ -110,6 +165,10 @@ namespace VLV2014Test.Controllers
             return File("../Downloads/Viva La Vino 2014 Sponsorship and Donation form.pdf", "application/pdf","VLV2014SponsorForm.pdf");
         }
 
+        /// <summary>
+        /// Foods
+        /// </summary>
+        /// <returns>ActionResult</returns>
         public ActionResult Foods()
         {
             WebPageItemsGroup foodGroups = new WebPageItemsGroup();
