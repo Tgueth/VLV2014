@@ -4,8 +4,15 @@
 <li data-srcpreview="@Model.pictureLink1.Image">
     <div>
         <div class="content">
-            <img src="@Model.pictureLink2.Image" alt="">
-            <h3>@Model.header</h3>
+            @if(Model != null && Model.pictureLink2 != null && Model.pictureLink2.Image != null)
+            {
+                <img src="@Model.pictureLink2.Image" alt="">
+            }
+            else
+            {
+                <span></span>
+            }
+            <h3>@Html.Raw(Model.header)</h3>
             <p>@Html.Raw(Model.hLine1)</p>
             <p>@Html.Raw(Model.hLine2)</p>
             <ul>

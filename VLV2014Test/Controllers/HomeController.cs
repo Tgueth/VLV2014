@@ -27,10 +27,11 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Index()
         {
+            WebPageItemsGroup groups = dataMgr.GetWebPageGroup(eventID, "Index");
             IndexView indexView = new IndexView();
             indexView.EventID = eventID;
             indexView.AllSponsors = sponsorGroups;
-            indexView.WebItems = dataMgr.GetWebPageItems(eventID, "Index", eventID.EventName);
+            indexView.WebItems = groups;
             return View(indexView);
         }
 
