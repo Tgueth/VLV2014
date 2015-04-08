@@ -1,6 +1,6 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
-@model BinaryStarTechnology.CharityEventRevenueMgmtClasses.Sponsors
+@model SponsorsView
 @{
     ViewBag.Title = "Sponsors";
     string link=null;
@@ -9,34 +9,19 @@
 
 <div id="TMGPrototype2">
     <div class="ic"></div>
-    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2014"></a></h1>
+    <h1><a href="index.cshtml"><img src="@Model.EventID.EventLogo.Image" alt="@Model.EventID.EventName"></a></h1>
     <ul class='sets'>
-        <li data-setname="Sponsors">
-            <ul>
-                @if (Model == null || Model.Count <= 0)
-                {
-                    TabSectionView sec1 = new TabSectionView("../images/red1.jpg", "../images/red_wine.jpg", "Sponsors","","To be updated.","","","","","","","");
-                    { Html.RenderPartial("ULsection", sec1); }
-                }
-                else
-                {
-                    foreach (Sponsor sponsor in Model)
+        @foreach (WebPageItems sponsors in Model.SponsorsGrouping)
+        {
+            <li data-setname="@sponsors.SectionName()">
+                <ul>
+                    @foreach (WebPageItem sponsor in sponsors)
                     {
-                        if (sponsor.SponsorImage != null && sponsor.SponsorImage.Image != null)
-                        {
-                            link = "<a href=\"" + sponsor.SponsorImage.Link + "\" target=\"_blank\"><img src=\"" + sponsor.SponsorImage.Image + "\" alt=\"\"></a>";
-                            
-                        }
-                        else
-                        {
-                            link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\">";
-                        }
-                        TabSectionView sec1 = new TabSectionView("../images/red1.jpg","../images/red_wine.jpg",sponsor.SponsorLevel + " Level Sponsor",sponsor.SponsorName,link,"",sponsor.SponsorSecondLine,"<p style=\"font-size:12pt\"><a href=\"" + "\" target=\"_blank\" >Website</a></p>","","","","");
-                        { Html.RenderPartial("ULsection", sec1); }
+                    { Html.RenderPartial("ULsection", sponsor); }
                     }
-                }
-            </ul>
-        </li>
+                </ul>
+            </li>
+        }
         <li data-setname="Forms">
             <ul>
                 <li>

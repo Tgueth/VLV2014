@@ -49,6 +49,10 @@ namespace VLV2014Test.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Wines()
         {
             ImageLink redWineBackground = dataMgr.GetImageLink(153);
@@ -130,8 +134,55 @@ namespace VLV2014Test.Controllers
 
         public ActionResult Sponsors()
         {
-            Sponsors AllSponsors = dataMgr.GetSponsors(eventID);
-            return View(AllSponsors);
+            WebPageItemsGroup allSponsors = new WebPageItemsGroup();
+            WebPageItems sponsors = new WebPageItems();
+            WebPageItem sponsor = null;
+            ImageLink img1 = dataMgr.GetImageLink(153);
+            ImageLink img2 = dataMgr.GetImageLink(152);
+            string link = null;
+            string aLink = null;
+
+            RevenueItems sponsorships = dataMgr.GetRevenueItemsByType(eventID, "Sponsorship");
+            int length = 0;
+            foreach(RevenueItem item in sponsorships)
+            {
+                length = System.Math.Max(item.ItemSubType.Length, length);
+            }
+
+            foreach(RevenueItem sponsorshipLevel in sponsorships)
+            {
+                Sponsors webSponsors = dataMgr.GetSponsorsByLevel(eventID, sponsorshipLevel.Item);
+                if ( webSponsors != null &&  webSponsors.Count > 0)
+                {
+                    sponsors = new WebPageItems();
+                    foreach(Sponsor webSponsor in webSponsors)
+                    {
+                        if (webSponsor.SponsorImage != null && webSponsor.SponsorImage.Image != null)
+                        {
+                            link = "<a href=\"" + webSponsor.SponsorImage.Link + "\" target=\"_blank\"><img src=\"" + webSponsor.SponsorImage.Image + "\" alt=\"\"></a>";
+
+                        }
+                        else
+                        {
+                            link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\">";
+                        }
+                        aLink = "<p style=\"font-size:12pt\"><a href=\"" + webSponsor.SponsorImage.Link + "\" target=\"_blank\" >Website</a></p>";
+                        sponsor = new WebPageItem(dataMgr, eventID, sponsorshipLevel.ItemName, img1, img2, webSponsor.SponsorLevel + " Level Sponsor", webSponsor.SponsorName, link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
+                        sponsors.Add(sponsor);
+                    }
+
+                    if ( sponsors.Count > 0)
+                    {
+                        allSponsors.Add(sponsors);
+                    }
+                }
+            }
+
+            SponsorsView view = new SponsorsView();
+            view.EventID = eventID;
+            view.SponsorsGrouping = allSponsors;
+
+            return View(view);
         }
 
         public ActionResult AuctionItems()
