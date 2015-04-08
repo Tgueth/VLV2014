@@ -5,7 +5,10 @@
 <li data-srcpreview="../images/red1.jpg">
     <div>
         <div class="content">
-            <img src="@Model.PictureLink.Image" alt="">
+            @if(Model.PictureLink != null)
+            {
+                <img src="@Model.PictureLink.Image" alt="">
+            }
             <h3>@Model.Item</h3>
             <p style="font-weight:bold;font-size:12pt">@Model.Name</p>
             @if(Model.Name != Model.Description)
@@ -21,18 +24,3 @@
         </div>
     </div>
 </li>
-@{
-    TabSectionView sec1 = new TabSectionView("../images/red1.jpg",  // pictureLink1
-                                Model.PictureLink.Image,     // pictureLink2
-                                Model.Item,
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "");
-}
-@{Html.RenderPartial("ULsection", sec1);}

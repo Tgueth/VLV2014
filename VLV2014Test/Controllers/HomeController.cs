@@ -64,62 +64,37 @@ namespace VLV2014Test.Controllers
             WineList white = dataMgr.GetWinesByClass(eventID, "White Wine");
             WineList dessert = dataMgr.GetWinesByClass(eventID, "Dessert Wine");
             
-            WineGroups wineGroups = new WineGroups();
-            wineGroups.Add(red);
-            wineGroups.Add(white);
-            wineGroups.Add(dessert);
-
             WebPageItemsGroup wineWebGroups = new WebPageItemsGroup();
-            WebPageItems redWines = new WebPageItems();
-            if (red == null || red.Count <= 0)
-            {
-                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Red Wine", redWineBackground, dataMgr.GetImageLink(152), "List of red wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
-                redWines.Add(wineItem);
-            }
-            else
-            {
-                foreach (Wine wine in red)
-                {
-                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Red Wine", redWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
-                    redWines.Add(wineItem);
-                }
-            }
-            wineWebGroups.Add(redWines);
 
-            WebPageItems whiteWines = new WebPageItems();
-            if (white == null || white.Count <= 0)
-            {
-                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "White Wine", whiteWineBackground, dataMgr.GetImageLink(152), "List of white wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
-                whiteWines.Add(wineItem);
-            }
-            else
-            {
-                foreach (Wine wine in white)
-                {
-                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "White Wine", whiteWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
-                    whiteWines.Add(wineItem);
-                }
-            }
-            wineWebGroups.Add(whiteWines);
+            wineWebGroups.Add(LoadWines(dessert, "Red Wines", redWineBackground, dataMgr.GetImageLink(152), noImage));
 
-            WebPageItems dessertWines = new WebPageItems();
-            if (dessert == null || dessert.Count <= 0)
-            {
-                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Dessert Wine", whiteWineBackground, dataMgr.GetImageLink(152), "List of Dessert wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
-                dessertWines.Add(wineItem);
-            }
-            else
-            {
-                foreach (Wine wine in dessert)
-                {
-                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, "Dessert Wine", whiteWineBackground, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
-                    dessertWines.Add(wineItem);
-                }
-            }
-            wineWebGroups.Add(dessertWines);
+            wineWebGroups.Add(LoadWines(white, "White Wines", whiteWineBackground, dataMgr.GetImageLink(152), noImage));
+
+            wineWebGroups.Add(LoadWines(dessert,"Dessert Wines",dessertWineBackground, dataMgr.GetImageLink(152), noImage));
 
 
             return View(wineWebGroups);
+        }
+
+        private WebPageItems LoadWines(WineList wines, string wineType, ImageLink background, ImageLink image, ImageLink noImage)
+        {
+            WebPageItems webWines = new WebPageItems();
+
+            if (wines == null || wines.Count <= 0)
+            {
+                WebPageItem wineItem = new WebPageItem(dataMgr, eventID, wineType, background, image, "List of Dessert wines is not yet available", "", "Please check back later.", "", "", "", "", "", "", "");
+                webWines.Add(wineItem);
+            }
+            else
+            {
+                foreach (Wine wine in wines)
+                {
+                    WebPageItem wineItem = new WebPageItem(dataMgr, eventID, wineType, background, (wine.PictureLink != null ? wine.PictureLink : noImage), wine.ItemName, "", wine.Description, "", "", "", "", "", "", "");
+                    webWines.Add(wineItem);
+                }
+            }
+
+            return webWines;
         }
 
         public ActionResult PurchaseTicket()
@@ -144,6 +119,7 @@ namespace VLV2014Test.Controllers
 
             RevenueItems sponsorships = dataMgr.GetRevenueItemsByType(eventID, "Sponsorship");
             int length = 0;
+            // get length of longest sponsor level so we can try to make web page tabs even
             foreach(RevenueItem item in sponsorships)
             {
                 length = System.Math.Max(item.ItemSubType.Length, length);
@@ -164,7 +140,7 @@ namespace VLV2014Test.Controllers
                         }
                         else
                         {
-                            link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\">";
+                            link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\" height=\"50\" width=\"50\" >";
                         }
                         aLink = "<p style=\"font-size:12pt\"><a href=\"" + webSponsor.SponsorImage.Link + "\" target=\"_blank\" >Website</a></p>";
                         sponsor = new WebPageItem(dataMgr, eventID, sponsorshipLevel.ItemName, img1, img2, webSponsor.SponsorLevel + " Level Sponsor", webSponsor.SponsorName, link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
@@ -187,7 +163,11 @@ namespace VLV2014Test.Controllers
 
         public ActionResult AuctionItems()
         {
+            WebPageItemsGroup webGroup = new WebPageItemsGroup();
+            WebPageItems webItems = null;
+            WebPageItem webItem = null;
             AuctionGroup auctions = new AuctionGroup();
+            ImageLink background = new ImageLink();
 
             RevenueItems liveAuction = dataMgr.GetRevenueItemsByType(eventID, "Live Auction");
             if (liveAuction != null)
