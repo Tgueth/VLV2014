@@ -17,6 +17,12 @@ namespace VLV2014Test.Controllers
         public static MenuItems menuItems = null;
         public static SponsorGroups sponsorGroups = null;
 
+        /// <summary>
+        /// HomeController
+        /// </summary>
+        /// <param name="dataMgr"></param>
+        /// <param name="eventID"></param>
+        /// <param name="items"></param>
         public HomeController(IDataManager dataMgr, IEvent eventID, MenuItems items)
         {
             this.dataMgr = dataMgr;
@@ -25,6 +31,10 @@ namespace VLV2014Test.Controllers
             sponsorGroups = dataMgr.GetAllSponsorsByLevel(eventID);
         }
 
+        /// <summary>
+        /// Index
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             WebPageItemsGroup groups = dataMgr.GetWebPageGroup(eventID, "Index");
@@ -42,15 +52,9 @@ namespace VLV2014Test.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
+        
         /// <summary>
-        /// 
+        /// Wines
         /// </summary>
         /// <returns></returns>
         public ActionResult Wines()
@@ -76,6 +80,15 @@ namespace VLV2014Test.Controllers
             return View(wineWebGroups);
         }
 
+        /// <summary>
+        /// LoadWines
+        /// </summary>
+        /// <param name="wines"></param>
+        /// <param name="wineType"></param>
+        /// <param name="background"></param>
+        /// <param name="image"></param>
+        /// <param name="noImage"></param>
+        /// <returns></returns>
         private WebPageItems LoadWines(WineList wines, string wineType, ImageLink background, ImageLink image, ImageLink noImage)
         {
             WebPageItems webWines = new WebPageItems();
@@ -97,16 +110,28 @@ namespace VLV2014Test.Controllers
             return webWines;
         }
 
+        /// <summary>
+        /// PurchaseTicket
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PurchaseTicket()
         {
             return View(eventID);
         }
 
+        /// <summary>
+        /// PurchaseTicketNS
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PurchaseTicketNS()
         {
             return View();
         }
 
+        /// <summary>
+        /// Sponsors
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Sponsors()
         {
             WebPageItemsGroup allSponsors = new WebPageItemsGroup();
@@ -161,13 +186,13 @@ namespace VLV2014Test.Controllers
             return View(view);
         }
 
+        /// <summary>
+        /// AuctionItems
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AuctionItems()
         {
-            WebPageItemsGroup webGroup = new WebPageItemsGroup();
-            WebPageItems webItems = null;
-            WebPageItem webItem = null;
             AuctionGroup auctions = new AuctionGroup();
-            ImageLink background = new ImageLink();
 
             RevenueItems liveAuction = dataMgr.GetRevenueItemsByType(eventID, "Live Auction");
             if (liveAuction != null)
@@ -182,6 +207,10 @@ namespace VLV2014Test.Controllers
             return View(auctions);
         }
 
+        /// <summary>
+        /// EventSchedule
+        /// </summary>
+        /// <returns></returns>
         public ActionResult EventSchedule()
         {
             EventActivities acts = dataMgr.GetEventActivities(eventID);
@@ -250,6 +279,10 @@ namespace VLV2014Test.Controllers
             return View(view);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult BidderSignup()
         {
             return View();
