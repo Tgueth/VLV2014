@@ -204,7 +204,12 @@ namespace VLV2014Test.Controllers
 
             if (auctions.EventID == null) auctions.EventID = this.eventID;
 
-            return View(auctions);
+            AuctionItemsView view = new AuctionItemsView();
+            view.EventID = eventID;
+            view.auctions = auctions;
+            view.AllSponsors = dataMgr.GetAllSponsorsByLevel(eventID);
+
+            return View(view);
         }
 
         /// <summary>

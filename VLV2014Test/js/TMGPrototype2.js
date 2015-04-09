@@ -121,6 +121,11 @@
         {
             interval = AutoPlayInterval;
         }
+        else
+        {
+            interval = 5000;
+        }
+
         if (autoPlay) {
             autoSwitch(interval);
         }      

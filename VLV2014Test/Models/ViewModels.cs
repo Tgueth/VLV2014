@@ -27,6 +27,13 @@ namespace VLV2014Test.Models
         public WebPageItemsGroup SponsorsGrouping { get; set; }
     }
 
+    public class AuctionItemsView
+    {
+        public IEvent EventID { get; set; }
+        public AuctionGroup auctions { get; set; }
+        public SponsorGroups AllSponsors { get; set; }
+    }
+
     public class TabSectionView
     {
         public string pictureLink1 { get; set; }
