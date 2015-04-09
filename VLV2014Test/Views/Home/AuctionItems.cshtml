@@ -13,10 +13,9 @@
     <ul class='sets'>
         @foreach(RevenueItems group in Model)
         {
-        <li data-setname="@group.RevenueType">
-            @Html.Partial("DisplayAuctionItems",group)
-        </li>
-           
+            <li data-setname="@group.RevenueType">
+                @Html.Partial("DisplayAuctionItems",group)
+            </li>
         }
     </ul>
 </div>
