@@ -36,17 +36,17 @@
     </ul>
 </div>
 
-@section TopTabs
-{
-    @{Html.RenderPartial("MenuLine", menuItems);}
-}
-
 @section Variables
 {
     <script>
         var AutoPlayInterval = 4000;
         var AutoPlay = true;
     </script>
+}
+
+@section TopTabs
+{
+    @{Html.RenderPartial("MenuLine", menuItems);}
 }
 
 @section Scripts
