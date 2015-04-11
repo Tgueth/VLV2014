@@ -177,7 +177,7 @@ namespace VLV2014Test.Controllers
                             hardSpaces.Append("&nbsp");
                         }
                         tab = sponsorshipLevel.Name;
-                        sponsor = new WebPageItem(dataMgr, eventID, tab, img1, img2, sponsorshipLevel.Name, webSponsor.SponsorName, link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
+                        sponsor = new WebPageItem(dataMgr, eventID, tab, img1, img2, webSponsor.SponsorName, "<span style=\"font-size:14pt\">" + sponsorshipLevel.Name + "</span>", link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
                         sponsors.Add(sponsor);
                     }
 
