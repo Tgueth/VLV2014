@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -141,13 +142,14 @@ namespace VLV2014Test.Controllers
             ImageLink img2 = dataMgr.GetImageLink(152);
             string link = null;
             string aLink = null;
+            string tab = null;
 
             RevenueItems sponsorships = dataMgr.GetRevenueItemsByType(eventID, "Sponsorship");
             int length = 0;
             // get length of longest sponsor level so we can try to make web page tabs even
             foreach(RevenueItem item in sponsorships)
             {
-                length = System.Math.Max(item.ItemSubType.Length, length);
+                length = System.Math.Max(item.Name.Length, length);
             }
 
             foreach(RevenueItem sponsorshipLevel in sponsorships)
@@ -168,7 +170,14 @@ namespace VLV2014Test.Controllers
                             link = "<img src=\"../images/Image_Not_Available.jpg\" alt=\"\" height=\"50\" width=\"50\" >";
                         }
                         aLink = "<p style=\"font-size:12pt\"><a href=\"" + webSponsor.SponsorImage.Link + "\" target=\"_blank\" >Website</a></p>";
-                        sponsor = new WebPageItem(dataMgr, eventID, sponsorshipLevel.ItemName, img1, img2, webSponsor.SponsorLevel + " Level Sponsor", webSponsor.SponsorName, link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
+                        int addLength = length - sponsorshipLevel.Name.Length;
+                        StringBuilder hardSpaces = new StringBuilder();
+                        for (int i = 0; i < addLength; i++)
+                        {
+                            hardSpaces.Append("&nbsp");
+                        }
+                        tab = sponsorshipLevel.Name;
+                        sponsor = new WebPageItem(dataMgr, eventID, tab, img1, img2, sponsorshipLevel.Name, webSponsor.SponsorName, link, "", webSponsor.SponsorSecondLine, aLink, "", "", "", "");
                         sponsors.Add(sponsor);
                     }
 
