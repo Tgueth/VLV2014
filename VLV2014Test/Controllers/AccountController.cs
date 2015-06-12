@@ -150,7 +150,7 @@ namespace VLV2014Test.Controllers
                             {
                                 string guid = User.Identity.GetUserId();
                                 // add the ASP.NET Identity to the Bidder record for use at next logon
-                                dataMgr.UpdateBidderWithLogonID(eventID, bidder, new Guid(guid));
+                                dataMgr.UpdateBidderWithLogonID(bidder, new Guid(guid));
                                 //reload bidder so we are sure we have everything
                                 bidder = dataMgr.GetBidder(eventID, m.BidNbr);
                                 // save Bidder as a session variable
