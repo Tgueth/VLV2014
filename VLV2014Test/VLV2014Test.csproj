@@ -370,6 +370,8 @@
     <Content Include="Views\Home\AuctionItems.cshtml" />
     <Content Include="Views\Home\EventSchedule.cshtml" />
     <Content Include="Downloads\Viva La Vino 2014 Sponsorship and Donation form.pdf" />
+    <Content Include="Downloads\Viva La Vino 2015 Sponsorship and Donation form.pdf" />
+    <Content Include="Downloads\VLV ad specs rev.pdf" />
     <None Include="Properties\PublishProfiles\DiscountASP.Net.pubxml" />
     <None Include="Properties\PublishProfiles\LocalLaptop.pubxml" />
     <Content Include="Views\Home\index.cshtml" />

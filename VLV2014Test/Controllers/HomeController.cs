@@ -236,7 +236,7 @@ namespace VLV2014Test.Controllers
 
         public ActionResult SponsorForm()
         {
-            return File("../Downloads/Viva La Vino 2014 Sponsorship and Donation form.pdf", "application/pdf","VLV2014SponsorForm.pdf");
+            return File("../Downloads/Viva La Vino 2015 Sponsorship and Donation form.pdf", "application/pdf", "Viva La Vino 2015 Sponsorship and Donation form.pdf");
         }
 
         /// <summary>
