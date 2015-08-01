@@ -34,9 +34,15 @@
                             hsize = (int) (ratio * hsize);
                             wsize = (int) (ratio * wsize);
                         }
+                        if ( hsize <= 50)
+                        {
+                            ratio = 50.0/hsize;
+                            hsize = (int)(ratio * hsize);
+                            wsize = (int)(ratio * wsize);
+                        }
                     }
                     <li>
-                        "<a href="@sponsor.SponsorImage.Link" target="_blank"><img src="@image" height="@hsize" width="@wsize" alt="" /></a>"
+                        "<a href="@sponsor.SponsorImage.Link" target="_blank"><img src="@image" height=@hsize width=@wsize alt="" /></a>"
                     </li>
                 }
             }
