@@ -6,7 +6,9 @@
 
 <div id="TMGPrototype2">
     <div class="ic"></div>
-    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="@Model.EventName"></a></h1>
+    <h1>
+        <p><a href="@Model.EventLogo.Link"><img src="@Model.EventLogo.Image" alt="@Model.EventName" /></a></p>
+    </h1>
     <ul class='sets'>
         <li data-setname="Ticket(s)">
             <ul>

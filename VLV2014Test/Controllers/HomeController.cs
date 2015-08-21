@@ -77,8 +77,11 @@ namespace VLV2014Test.Controllers
 
             wineWebGroups.Add(LoadWines(dessert,"Dessert Wines",dessertWineBackground, dataMgr.GetImageLink(152), noImage));
 
+            WinesView winesView = new WinesView();
+            winesView.EventID = this.eventID;
+            winesView.WineGroups = wineWebGroups;
 
-            return View(wineWebGroups);
+            return View(winesView);
         }
 
         /// <summary>

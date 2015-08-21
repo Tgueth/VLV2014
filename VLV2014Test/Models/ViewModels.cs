@@ -21,6 +21,13 @@ namespace VLV2014Test.Models
         public WebPageItemsGroup FoodsToShow { get; set; }
     }
 
+    public class WinesView
+    {
+        public IEvent EventID { get; set; }
+        public SponsorGroups AllSponsors { get; set; }
+        public WebPageItemsGroup WineGroups { get; set; }
+    }
+
     public class SponsorsView
     {
         public IEvent EventID { get; set; }

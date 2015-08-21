@@ -1,6 +1,6 @@
 ﻿@using BinaryStarTechnology.CharityEventRevenueMgmtClasses
 @using VLV2014Test.Models
-@model WebPageItemsGroup
+@model WinesView
 @{
     ViewBag.Title = "Wines";
     string link = null;
@@ -9,8 +9,10 @@
 
 <div id="TMGPrototype2">
     <div class="ic"></div>
-    <h1><a href="index.cshtml"><img src="../images/VivaLaVinoSmaller.jpg" alt="Viva La Vino 2015"></a></h1>
-    @foreach (WebPageItems items in Model)
+    <h1>
+        <p><a href="@Model.EventID.EventLogo.Link"><img src="@Model.EventID.EventLogo.Image" alt="@Model.EventID.EventName" /></a></p>
+    </h1>
+    @foreach (WebPageItems items in Model.WineGroups)
     {
         <ul class='sets'>
             <li data-setname="@items.SectionName()">
