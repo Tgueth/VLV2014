@@ -15,7 +15,10 @@
             {
                 <p>@Model.Description</p>
             }
-            <p>Valued at: @Model.ItemValue.ToString("C")</p>
+            @if(Model.ItemValue > 1.0)
+            { 
+                <p>Valued at: @Model.ItemValue.ToString("C")</p>
+            }
             <p> @(Model.DonatedByLink > -1 ? "Donated by:" + Model.DonatedByLink : "")</p>
             <ul>
                 <li></li>
